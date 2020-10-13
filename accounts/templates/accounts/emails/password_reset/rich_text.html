@@ -1,0 +1,12 @@
+{% extends 'core/emails/base.html' %}
+
+{% block content %}
+    <p>Hi {{ name }},</p>
+    <p>
+        A password reset for the account associated with the email address has been requested. If you are not the owner of this account please ignore this message.
+    </p>
+    <p>
+        <a href='{{ reset_url }}'>Click here</a> to reset your password.<br/><br/>
+        If you are having trouble with the link above, copy-paste the following into your web browser: {{ reset_url }}
+    </p>
+{% endblock %}

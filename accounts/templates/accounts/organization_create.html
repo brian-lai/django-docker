@@ -1,0 +1,33 @@
+{% extends 'core/generics/base-create.html' %}
+{% load crispy_forms_tags %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block accounts-app-navigation %}active{% endblock %}
+{% block accounts-app-navigation-arrow %}open{% endblock %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Accounts' 'root' %}
+    {% breadcrumb 'Organizations' 'organization:list' %}
+    {% breadcrumb 'Create' '' %}
+{% endblock %}
+
+{% block html-title %}Create Organization{% endblock %}
+
+{% block page-title %}Organization - Create{% endblock %}
+{% block form-content %}
+	<h3>Organization Info</h3>
+	{{ form.name | as_crispy_field }}
+    {{ form.organization_type | as_crispy_field }}
+	{{ form.abbr | as_crispy_field }}
+	{{ form.phone_number | as_crispy_field }}
+    {{ form.fax_number | as_crispy_field }}
+	{{ form.website | as_crispy_field }}
+	<h3>Address</h3>
+	{{ form.address_line1 | as_crispy_field }}
+	{{ form.address_line2 | as_crispy_field }}
+	{{ form.address_city | as_crispy_field }}
+	{{ form.address_state | as_crispy_field }}
+	{{ form.address_zip | as_crispy_field }}
+    {{ form.address_country | as_crispy_field }}
+{% endblock %}

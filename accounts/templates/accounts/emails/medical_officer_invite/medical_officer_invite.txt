@@ -1,0 +1,13 @@
+{% extends 'core/emails/base.txt' %}
+
+{% block content %}
+    You are invited to join the GenePeeks clinic portal as a member of {{ organization }}.
+
+    You may use this secure portal to:
+        1) Review and authorize patient screens
+        2) Review and manage patient results
+
+    To activate your account, copy/paste the following into your browser: {{ invite_url }}
+
+    Please don't hesitate to contact us with questions. We are always happy to help.
+{% endblock %}

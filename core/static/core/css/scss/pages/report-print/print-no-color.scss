@@ -1,0 +1,88 @@
+/* print black and white  ************************************************************************************
+**************************************************************************************************************/
+
+.no-color {
+  /* client-info-box  ****************************************************
+  ************************************************************************/
+
+  .client-info-box-container {
+    .client-info-box {
+      border: 1px solid #000;
+      .participant-icon-person {
+        &:before {
+          content: url(../svg/print-icons/person-black.svg);
+        }
+      }
+      .participant-icon-plus {
+        &:before {
+          content: url(../svg/print-icons/plus-black.svg);
+        }
+      }
+    }
+  }
+  /* participant-selector ************************************************
+  ************************************************************************/
+
+  .participant-selector {
+    span {
+      border-bottom: 1px solid #000;
+    }
+  }
+  .variant-list {
+    td {
+      border: 1px solid #000;
+      color: #000;
+    }
+  }
+  .contact-info {
+    &:before {
+      display: none;
+    }
+    &:after {
+      display: block;
+    }
+  }
+  .main-accordion {
+    &.large-accordion {
+      .main-accordion-section-title {
+        border-bottom: 1px solid #000;
+      }
+    }
+  }
+  .content-section {
+    background: #fff;
+    &:after {
+      width: 100%;
+      background: black;
+    }
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    span,
+    li {
+      color: #000 !important;
+    }
+  }
+  .header {
+    border-bottom: 1px solid #000;
+    &:before {
+      content: url(../svg/print-icons/genepeeks-logo.svg);
+    }
+  }
+  .hero#hero-report {
+    display: none;
+  }
+  .diamond-sequence {
+    display: none;
+  }
+  .thank-you-previde {
+    border: 1px solid #000;
+  }
+  footer {
+    display: none;
+  }
+}

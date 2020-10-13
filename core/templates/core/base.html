@@ -1,0 +1,72 @@
+{% load google_analytics %}
+{% load hijack_tags %}
+{% load hosts %}
+{% load staticfiles %}
+
+<!doctype html>
+<html class='no-js' lang='en'>
+    <head>
+        {# Include the title_meta_base file for SEO #}
+        <meta charset='utf-8'>
+        <meta http-equiv='x-ua-compatible' content='ie=edge'>
+        <meta name='keywords' content='{% block keywords %}genetics{% endblock %}'>
+        <meta name='description' content=''>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        {# OG meta for chat rendering #}
+        <meta property='og:type' content='website'>
+        <meta property='og:url' content='{{ request.build_absolute_uri }}' />
+        <meta property='og:title' content='{% block og-title %}GenePeeks{% endblock %}' />
+        <meta property='og:description' content='{% block og-description %}We started GenePeeks to offer parents-to-be the most advanced genetic screening tools before starting a pregnancy – when it’s possible to reduce the chance of passing on genetic risk.{% endblock %}' />
+        <meta property='og:image' content='{% block og-image %}{% static 'core/img/hero-home/billboard_curly_mother_child-md.jpg' %}{% endblock %}' />
+        <meta property='twitter:card' content='summary_large_image'>
+
+        {# HTML title and favicon #}
+        <title>{% block title %}{% endblock%} | GenePeeks</title>
+        <link rel='shortcut icon' type='image/png' href='{% static 'favicon.png' %}'/>
+
+        {# Baseline imports for css/js formatting #}
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,700'>
+        <link rel='stylesheet' type='text/css' href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel='stylesheet' type='text/css' href="{% static 'hijack/hijack-styles.css' %}" />
+        <link rel='stylesheet' type='text/css' href="{% static 'core/css/main.min.css' %}">
+        {% block css-imports %}{% endblock %}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+        <script type='text/javascript' src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+        <script type='text/javascript' src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        {% include 'core/heap.js.html' %}
+        <script type='text/javascript'>
+            var disease_count = {{ DISEASE_COUNT }};
+        </script>
+        {% block js-imports %}{% endblock %}
+
+        {# Google Analytics inclusion tag #}
+        {% google_analytics %}
+        {% if FEATURE_FLAG_AD_CONVERSIONS %}
+            {% include 'core/facebook_global_pixel.js.html' %}
+            {% include 'core/facebook_brochure_request_pixel.js.html' %}
+        {% endif %}
+    </head>
+    <!-- For color print layout add class of print-layout to the body. For black and white print layout add classes of print-layout and no-color to the body -->
+    <body id="top" {% block ng-app %}{% endblock %} class="" >
+        {% hijack_notification %}
+
+        <div class='site-constraint'>
+            {% block header %}
+                {% include 'core/header.html' %}
+            {% endblock %}
+
+            <div class='body-content'>
+                {% block hero_content %}{% endblock %}
+                {% block page_content %}{% endblock %}
+            </div>
+
+            {% block footer %}
+                {% include 'core/footer.html' %}
+            {% endblock %}
+        </div>
+
+        {# Load at the end until we decide if $(document).ready is appropriate #}
+        <script type='text/javascript' src='{% static 'core/js/app.min.js' %}'></script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'accounts/organization_settings_lab_detail.html' %}
+
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Update' 'organization:lab:update' pk=organization.pk division='lab' %}
+{% endblock %}
+
+{% block profile-content-title %}Lab Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_lab %}
+        {% host_url 'organization:lab:update' pk=organization.pk division='lab' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Lab' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <form method='POST' action="{% host_url 'organization:lab:update' division='lab' pk=organization.pk host 'accounts' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type='submit' class='btn blue' name='Submit' value='Submit'>Submit</button>
+    </form>
+{% endblock %}

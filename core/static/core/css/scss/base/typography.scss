@@ -1,0 +1,71 @@
+
+#{h(1,6)} {
+  color: $default-text;
+}
+
+h1 {
+  font-size: 3.4375rem;
+  line-height: 3.75rem;
+  margin: 0 0 0.5rem 0;
+}
+h2 {
+  font-size: 2.25rem;
+  margin: 0 0 1.25rem 0;
+  font-weight: 300;
+}
+h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1.25rem 0;
+  font-weight: 300;
+}
+h4 {
+  font-size: 1.5rem;
+  margin:  0 0 1.25rem;
+  font-weight: 400;
+}
+h5 {
+  font-size: 1.0625rem;
+  margin:  0 0 1.25rem;
+}
+
+p {
+  color: $grey;
+  font-size: 1.35rem;
+  margin:  0 0 1.25rem;
+  &.subtitle {
+    color: $grey;
+    font-size: 1.6875rem;
+    font-weight: 200;
+    margin: 0 0 1.25rem;
+  }
+  &.lead {
+    font-size: 1.5rem;
+    color: $default-text;
+    margin: 0 0 1.25rem;
+    .user-flow & {
+      font-weight: 500;
+    }
+  }
+  &.small {
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+  }
+  &.subtext {
+    &, .user-flow & {
+      color: $grey;
+      font-style: normal;
+      font-size: 1.25rem;
+    }
+  }
+  b {
+    font-weight: 500;
+  }
+  i {
+    color: $grey;
+  }
+}
+
+strong {
+  font-weight: 500;
+}

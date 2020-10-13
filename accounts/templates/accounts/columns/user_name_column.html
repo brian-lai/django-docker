@@ -1,0 +1,3 @@
+{% load hosts %}
+
+<a href='{{ record.get_absolute_url }}'>{{ record.get_full_name|default:record.username }}</a>

@@ -1,0 +1,358 @@
+.my-genepeeks {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  min-height: calc(100vh - 168px);
+  background: linear-gradient(to left bottom, #56C7BF 50%, #63C6CD);
+  background: url(../img/hero-my_genepeeks/my_genepeeks_hero.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  @media (max-width: 1440px) {
+    background: url(../img/hero-my_genepeeks/my_genepeeks_hero-lg.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+  }
+  @media (max-width: $screen-md) {
+    background: linear-gradient(to right bottom, #56C7BF 50%, #63C6CD);
+    background-attachment: initial;
+
+  }
+  h2 {
+    //font-size: 2.5rem;
+    color: $white;
+    //margin-bottom: 3rem;
+    font-weight: 200;
+  }
+  h3 {
+    //font-size: 2rem;
+    margin: 0;
+    color: $white;
+    font-weight: 200;
+  }
+  p {
+    //font-size: 1.5rem;
+    font-weight: 200;
+    color: $white;
+  }
+  .previde-screen {
+    width: 100%;
+    border: 1px solid $white;
+    border-radius: 1.25rem;
+    padding: 0.875rem 1.75rem;
+    margin-top: 4.5rem;
+    position: relative;
+    cursor: pointer;
+    &:before {
+      background: $white;
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: 300%;
+      top: 2rem;
+      left: -1px;
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      transition: 0.2s linear;
+      @media (max-width: 805px) {
+        display: none;
+      }
+    }
+    h3 {
+      display: inline-block;
+      font-weight: 200;
+      margin: 0;
+      @media (max-width: $screen-xs) {
+        display: block;
+        padding-right: 40px;
+      }
+    }
+    .completed,
+    .in-progress {
+      border-radius: 0.5rem;
+      display: inline-block;
+      background: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 0.125rem 1.25rem;
+      margin-left: 2rem;
+      font-size: 1rem;
+      vertical-align: text-bottom;
+      @media (max-width: $screen-xs) {
+        display: block;
+        margin: 1rem 0;
+        width: auto;
+      }
+    }
+    .in-progress {
+      color: $blueberry;
+    }
+    .completed {
+      color: $watermelon;
+    }
+  }
+  .sample-contributors-list {
+    border: 1px solid transparent;
+    list-style:none;
+    padding: 1rem 0;
+    margin: 2rem 0;
+    position: relative;
+    &:before {
+      background: $white;
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: 100%;
+      top: 6rem;
+      left: -1.8125rem;
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      transition: 0.2s linear;
+      @media (max-width: 805px) {
+        display: none;
+      }
+    }
+    li {
+      color: $white;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    span {
+      color: $white;
+      font-size: 1.25rem;
+      font-weight: 200;
+      margin-left: 0.75rem;
+    }
+  }
+  .sample-box {
+    width: 100%;
+    padding: 0;
+    margin: 2.5rem 0;
+    padding-left: 1.75rem;
+    position: relative;
+    @media (max-width: 805px) {
+      padding: 0;
+    }
+    &:before {
+      background: $white;
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: 100%;
+      top: 6rem;
+      left: 0px;
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      transition: 0.2s linear;
+      @media (max-width: 805px) {
+        display: none;
+      }
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+        &:before {
+          display: none;
+        }
+    }
+    //&:first-of-type {
+    //  margin-bottom: 2.5rem;
+    //    &:before {
+    //      display: inline-block;
+    //      @media (max-width: 805px) {
+    //        display: none;
+    //      }
+    //    }
+    //}
+    h3 {
+      margin: 0;
+    }
+    p {
+      margin: 0.75rem 0;
+      font-size: 1.25rem;
+      font-weight: 200;
+    }
+  }
+  .sample-box-contents {
+    width: 100%;
+    border: 1px solid $white;
+    border-radius: 1.25rem;
+    padding: 1.875rem 1.875rem;
+    margin: 2.5rem 0;
+    position: relative;
+    @media (max-width: 805px) {
+      padding: 2.5rem 1.875rem 1.875rem;
+    }
+    &:after {
+      display: block;
+      width: 6.25rem;
+      height: 6.25rem;
+      position: absolute;
+      top: 1.5rem;
+      left: -4.95rem;
+      z-index: 2;
+      opacity: 0;
+      transition: 0.4s linear;
+      @media (max-width: 805px) {
+        width: 4.5rem;
+        height: 4.5rem;
+        top: -2.25rem;
+        left: calc(50% - 2.25rem);
+      }
+    }
+  }
+  .setup-screen-container.sample-box {
+    &:before {
+      opacity: 1;
+      @media (max-width: 805px) {
+        display: none;
+      }
+    }
+    .sample-box-contents {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+  .contact-box {
+    width: 100%;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 1.25rem;
+    padding: 1.875rem 1.875rem;
+    margin: 2.5rem 0;
+    h3 {
+      color: $grey;
+    }
+    p {
+      color: $grey;
+    }
+    .contact-info {
+      color: $grey;
+    }
+  }
+
+  .form-control {
+    height: 4rem;
+    margin: 1rem 0 2rem 0;
+  }
+  .btn.btn-primary {
+    font-size: 1.5rem;
+    font-weight: 300;
+    min-width: 0;
+    padding: 0.5rem 1.5rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .main-btn {
+    min-width: 0;
+    padding: 0.5rem 1.5rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .reveal-container {
+    position: relative;
+    margin-bottom: 3rem;
+    @media (max-width: $screen-md) {
+      margin-bottom: 5rem;
+    }
+  }
+  .reveal-inner {
+    display: none;
+  }
+  .register-sample-kit {
+    &:after {
+      content: url(../svg/svg-icons/kit-icons/GenePeeks_Iconography_primary-18.svg);
+    }
+  }
+  .receive-results {
+    &:after {
+      content: url(../svg/svg-icons/results-icons/GenePeeks_Iconography_primary-11.svg);
+    }
+  }
+  .schedule-appointment {
+    &:after {
+      content: url(../svg/svg-icons/appointment-icons/GenePeeks_Iconography_primary-60.svg);
+    }
+  }
+  .patient-agreement {
+    &:after {
+      content: url(../svg/svg-icons/warning-icons/GenePeeks_Iconography_primary-81.svg);
+    }
+  }
+  .setup-screen {
+    &:after {
+      content: url(../svg/svg-icons/create-icons/GenePeeks_Iconography_primary-25.svg);
+    }
+  }
+  .expanded {
+    .my-genepeeks-reveal-chevron {
+      transform: rotate(-180deg);
+    }
+  }
+  .show {
+    .previde-screen {
+      &:before {
+        opacity: 1;
+        transition: 0.4s linear;
+      }
+    }
+    .sample-box {
+      &:before {
+        opacity: 1;
+        transition: 0.4s linear;
+      }
+    }
+    .sample-box-contents {
+      &:after {
+        opacity: 1;
+        transition: 0.2s linear;
+      }
+    }
+    .sample-contributors-list {
+      &:before {
+        opacity: 1;
+        transition: 0.4s linear;
+      }
+    }
+  }
+}
+
+
+.my-genepeeks-reveal-chevron {
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  border: 1px solid $grey-bg-lite;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  color: $blueberry-lite;
+  position: absolute;
+  top: 1.25rem;
+  right: 2.25rem;
+  text-align: center;
+  transition: 0.4s linear;
+  cursor: pointer;
+  z-index: 0;
+  @media (max-width: $screen-xs) {
+    top: 1rem;
+  }
+  &:before {
+    display: inline-block;
+    content: '\f107';
+    line-height: 24px;
+    font-family: Fontawesome;
+    font-size: 20px;
+    color: inherit;
+
+  }
+  &:hover {
+    color: $white;
+    background: transparent;
+  }
+}

@@ -1,0 +1,26 @@
+<table class='table table-striped table-hover'>
+    <thead>
+        <tr class='table-headers'>
+            <th>ID</th>
+            <th>Job Function</th>
+            <th>Queue</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in queued_jobs %}
+            <tr>
+                <td>{{ job.get_id }}</td>
+                <td>
+                    {{ job.func_name }}
+                </td>
+                <td>
+                    {{ job.origin|title }}
+                </td>
+                <td>
+                    <span class='label label-sm label-{% with s=job.get_status %}{% if s == 'queued' %}default{% elif s == 'started' %}success{% elif t == 'finished' %}info{% endif %}{% endwith %}'>{{ job.get_status|title }}</span>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

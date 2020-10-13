@@ -1,0 +1,41 @@
+{% extends 'accounts/organization_settings_detail.html' %}
+
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Update' 'organization:settings:update' pk=organization.pk %}
+{% endblock %}
+
+{% block profile-content-title %}Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_organization %}
+        {% host_url 'organization:settings:update' pk=organization.pk host 'accounts' as url %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <form action="{% host_url 'organization:settings:update' pk=organization.pk host 'accounts' %}" method='POST'>
+        {% csrf_token %}
+        <h4>General Information</h4>
+        <p>{{ form.name|as_crispy_field}}</p>
+        <p>{{ form.phone_number|as_crispy_field }}</p>
+        <p>{{ form.fax_number|as_crispy_field }}</p>
+        <p>{{ form.website|as_crispy_field }}</p>
+
+        <h4>Address</h4>
+        <p>{{ form.address_name|as_crispy_field }}</p>
+        <p>{{ form.address_line1|as_crispy_field }}</p>
+        <p>{{ form.address_line2|as_crispy_field }}</p>
+        <p>{{ form.address_city|as_crispy_field }}</p>
+        <p>{{ form.address_state|as_crispy_field }}</p>
+        <p>{{ form.address_zip|as_crispy_field }}</p>
+        <p>{{ form.address_country|as_crispy_field }}</p>
+        <br>
+        <button type='submit' class='btn blue' name='Submit' value='Submit'>Submit</button>
+    </form>
+{% endblock %}

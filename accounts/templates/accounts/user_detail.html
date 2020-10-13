@@ -1,0 +1,66 @@
+{% extends 'accounts/user_base.html' %}
+
+{% load hosts %}
+{% load role_filters %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <style>
+        .role-adder {
+            border: 1px solid #5B9BD1;
+            text-align: center;
+        }
+        .role-adder .glyphicons {
+            padding: 10px;
+            font-size: 36px;
+        }
+        .mt-element-ribbon {
+            min-height: 125px;
+        }
+        .ribbon-color-genepeeks {
+            background-color: #488384 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
+{% endblock %}
+
+{% block user-detail-menu-overview %}active{% endblock %}
+
+{% block profile-content %}
+    <div class='profile-content'>
+        <div class='row'>
+            <div class='col-lg-8'>
+                <!-- BEGIN PORTLET -->
+                <div id='id-roles' class='portlet light bordered'>
+                    <div class='portlet-title'>
+                        <div class='caption caption-md'>
+                            <i class='icon-screen-desktop theme-font hide'></i>
+                            <span class='caption-subject font-blue-madison bold uppercase'>Roles</span>
+                        </div>
+                    </div>
+                    <div class='portlet-body'>
+                        <div class='row'>
+                            {% for role in user.profile.roles %}
+                                <div class='col-xs-12 col-md-6'>
+                                    {% with template_name=role|profile_widget %}
+                                        {% include template_name %}
+                                    {% endwith %}
+                                </div>
+                            {% endfor %}
+                            {% if can_manage and user.profile.organizations %}
+                                <div class='col-xs-12 col-md-6'>
+                                    <div class='mt-element-ribbon role-adder'>
+                                        <a href='{% host_url 'user:add-role' pk=user.pk host 'accounts' %}' data-toggle='modal' data-target='#dynamic-modal'>
+                                            <span class='glyphicons glyphicons-plus'></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- END PORTLET -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

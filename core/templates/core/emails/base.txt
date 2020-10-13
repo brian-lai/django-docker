@@ -1,0 +1,13 @@
+{% block content %}{% endblock %}
+
+{% block footer %}
+    Thank you,
+
+    The GenePeeks Team
+    1-855-DNA-PEEK (1-855-362-7335)
+    www.genepeeks.com
+{% endblock %}
+
+{% block disclaimer %}
+    All exchanges with GenePeeks will remain confidential. If you do not wish to receive additional emails from GenePeeks, please alert the sender of this email.
+{% endblock %}

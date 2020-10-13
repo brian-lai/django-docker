@@ -1,0 +1,78 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <!-- This is where all of the SEO stuff will go -->
+        <meta http-equiv='content-type' content='text/html; charset=UTF-8' />
+        <title>{% block title %}Error{% endblock %}</title>
+        <link rel='icon' type='image/png' href='{% static 'favicon.png' %}?version=2.0'/>
+
+        {#                Baseline imports for css/js formatting                    #}
+        <link rel='stylesheet' href='{% static 'bootstrap/dist/css/bootstrap.min.css' %}'/>
+        <link rel='stylesheet' href='{% static 'common/css/glyphicons.css' %}'>
+        <link rel='stylesheet' href='{% static 'common/css/common.css' %}'/>
+        {% block css-imports %}{% endblock %}
+        {% block css-tags %}{% endblock %}
+
+        <script type='text/javascript' src='{% static 'jquery/dist/jquery.min.js' %}'></script>
+        <script type='text/javascript' src='{% static 'bootstrap/dist/js/bootstrap.min.js' %}' ></script>
+        <script src='{% static 'core/plugins/bootstrap-toastr/toastr.min.js' %}' type='text/javascript'></script>
+        <script type='text/javascript'>
+            /* Toast Notifications */
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "3000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "3000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            // Include the messages
+            $(document).ready(function() {
+                {% if messages %}
+                    {% for message in messages %}
+                        toastr['{{ message.tags }}']('{{ message }}', 'Toast Notification');
+                    {% endfor %}
+                {% endif %}
+            });
+        </script>
+        {% block js-imports %}{% endblock %}
+    </head>
+    <body>
+        <div id='page-wrapper' class='parent fit'>
+            {# Wrapper for main page content #}
+            <div class='body-wrapper'>
+                {# Page content #}
+                <section role='main'>
+                    <div class='page-content'>
+                        {# Primary page content block #}
+                        {% block page-wrapper %}{% endblock %}
+                    </div>
+                </section>
+
+                {# Footer content #}
+                <footer>
+                    {% block footer %}
+                        <hr>
+                        <ul class="list-inline">
+                            <li>&copy; 2015 GenePeeks, Inc.</li>
+                            <li>
+                                <a href="mailto:{% block contact_email %}support@genepeeks.com{% endblock %}">Contact</a>
+                            </li>
+                            <li>
+                                <a href="/terms" target='_blank'>Terms</a>
+                            </li>
+                            {% block footer-elements %}{% endblock %}
+                        </ul>
+                    {% endblock %}
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'core/blank.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load staticfiles %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'System' '' %}
+{% endblock %}
+
+{% block html-title %}Application Error{% endblock %}
+
+{% block page-title %}Application Error{% endblock %}
+
+{% block page-subtitle %}Server 500{% endblock %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <link href='{% static 'core/css/error.min.css' %}' rel='stylesheet' type='text/css' />
+{% endblock %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-md-12 page-500'>
+            <div class='number font-red'>500</div>
+            <div class='details'>
+                <h3>Oops! Something went wrong.</h3>
+                <p> We are fixing it! Please come back in a while.
+                    <br/>
+                </p>
+                <p>
+                    <a href='{% host_url 'root' host 'dashboard' %}' class='btn red btn-outline'>Return home </a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

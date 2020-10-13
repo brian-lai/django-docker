@@ -1,0 +1,131 @@
+.participant-selector {
+  display: block;
+  padding: 1.5rem 0rem 4rem 0;
+  list-style: none;
+  height: auto;
+  margin: 0;
+  @media (max-width: $screen-sm){
+    margin-top: -95px;
+    padding: 1.5rem 0 4rem 0;
+  }
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+  .participant-container {
+    width: 50%;
+    float: left;
+    @media (max-width: $screen-sm){
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      float: none;
+    }
+    div {
+      width: 85%;
+      position: relative;
+      @media (max-width: $screen-sm){
+        width: 90%;
+      }
+    }
+  }
+  .participant-title {
+    border-bottom: 1px solid $grey-bg-lite;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10px;
+    color: $blueberry-lite;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    height:  36px;
+    transition: $hover;
+    cursor: pointer;
+    &:hover {
+      color: lighten($blueberry-lite, 10%);
+    }
+    @media (max-width: $screen-sm){
+      font-size: 1.5rem;
+      height:  30px;
+    }
+    &:after {
+      display: inline-block;
+      content: '\f107';
+      font-family: Fontawesome;
+      font-size: 1.125rem;
+      margin-left: 10px;
+      transition: 0.4s linear;
+    }
+  }
+  ul {
+    border-radius: 0 0 1.25rem 1.25rem;
+    border: 1px solid $grey-bg-lite;
+    background: $white;
+    display: none;
+    margin: 0;
+    width: 100%;
+    padding: 1.75rem;
+    list-style: none;
+    position: absolute;
+    top: 35px;
+    z-index: 100;
+    @media (max-width: $screen-sm){
+      position: relative;
+      top: -1px;
+    }
+  }
+  li {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    @media (max-width: $screen-sm){
+      font-size: 1.125rem;
+      h5 {
+        font-size: 1.375rem;
+      }
+    }
+  }
+  .spacer {
+    min-height: 1.42875rem;
+  }
+  .expanded {
+    span {
+      &:after {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+.participant-icon-person,
+.participant-icon-plus {
+  position: relative;
+  &:before,
+  &:after {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    left: -4rem;
+    top: -1rem;
+  }
+}
+
+.participant-icon-person {
+  &:before {
+    content: url(../svg/svg-icons-set-2/person/GenePeeks_Iconography_secondary-70.svg);
+  }
+  &:after {
+    content: url(../svg/print-icons/person-black.svg);
+    display: none;
+  }
+}
+
+.participant-icon-plus {
+  &:before {
+    content: url(../svg/svg-icons-set-2/plus/GenePeeks_Iconography_secondary-21.svg);
+  }
+  &:after {
+    content: url(../svg/print-icons/plus-black.svg);
+    display: none;
+  }
+}

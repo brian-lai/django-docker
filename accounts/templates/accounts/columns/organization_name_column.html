@@ -1,0 +1,3 @@
+{% load hosts %}
+
+<a href='{% host_url 'organization:detail' pk=record.pk host 'accounts' %}'>{{ record.name }}</a>

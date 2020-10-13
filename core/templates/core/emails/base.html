@@ -1,0 +1,39 @@
+{% load hosts %}
+{% load staticfiles %}
+
+<html>
+    <head>
+        {% block styles %}
+        {% endblock %}
+    </head>
+    <body>
+        {% if jsld %}
+            {% include 'core/emails/gmail-view-action.html' %}
+        {% endif %}
+        <div style="background-color: #F7F7F7;padding-bottom: 25px;margin: 0;">
+            <div style='width: 600px;margin: 0 auto; background-color: #FFFFFF; font-size: 14px;'>
+                <div style='position: relative; background-color: #36959E; padding: 20px 50px;'>
+                    <a href='https://www.genepeeks.com'>
+                        <img width='auto' src="{% static 'core/images/genepeeks-logo-30px.png' %}"  />
+                    </a>
+                </div>
+                <div style="position: relative;padding: 25px 50px 10px 50px;" role='main'>
+                    {% block content %}{% endblock %}
+                    {% block footer %}
+                        {% block farewell %}<p style='margin-top: 10px;'>{% block farewell-text %}Thank you,{% endblock %}</p>{% endblock %}
+                        <p>
+                            The GenePeeks Team<br/>
+                            <a href="https://www.genepeeks.com">www.genepeeks.com</a>
+                        </p>
+                    {% endblock %}
+                </div>
+                {% block disclaimer %}
+                    <div style="position: relative;padding: 10px 50px;color: #BBBBBB;">
+                        <hr style="color: #BBBBBB;"/>
+                        <p style="margin-top: 0;">All exchanges with GenePeeks will remain confidential. If you do not wish to receive additional emails from GenePeeks, please alert the sender of this email.</p>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,427 @@
+/* print  ****************************************************************************************************
+**************************************************************************************************************/
+
+.print-layout {
+  h2 {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  h3 {
+    margin-bottom: 14px;
+  }
+  h4 {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  h5 {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .subtitle {
+    font-size: 17px;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .lead {
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+  p {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  a {
+    font-size: 14px;
+  }
+  span {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .participant-container {
+    span {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+    li {
+      h5 {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+    }
+  }
+  .content-section {
+    background: #fff;
+    a,
+    p,
+    h4,
+    h5,
+    td,
+    span,
+    ol li
+    {
+      color: $default-text !important;
+    }
+    .download-container {
+      display: none;
+    }
+  }
+  .content-section {
+    background: #fff;
+    &:after {
+      display: block;
+      content: '';
+      width: 80%;
+      margin: 0 auto;
+      height: 1px;
+      background: $grey-bg-lite;
+      background: linear-gradient(-90deg, $white, $grey-bg-lite, $white);
+    }
+    .list-group {
+      top: -50px;
+    }
+    &:last-of-type {
+      .report-container {
+        &:before {
+          height: auto;
+          bottom: 150px;
+        }
+      }
+    }
+    .user-flow-nav {
+      display: none;
+      .report-nav {
+        display: none;
+      }
+    }
+    .report-container {
+      padding-left: 5rem;
+      &:before {
+        display: none;
+      }
+    }
+    .report-content {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .gene-list {
+      padding: 5px 0;
+      span{
+        margin-bottom: 5px;
+      }
+    }
+    .contact-info {
+      a {
+        color: inherit;
+      }
+    }
+    .report-content {
+      .risk-detected,
+      .no-risk-detected {
+        background-image: url(../svg/disease-risk-detected.svg);
+        background-position: 100% 2%;
+        background-size: 39%;
+        .col-lg-7{
+          width: 61%;
+        }
+        .col-lg-8,
+        .col-lg-12 {
+          width: 70%;
+        }
+      }
+    }
+/* client-info-box  ****************************************************
+************************************************************************/
+
+    .client-info-box-container {
+      display: none;
+    }
+
+/* participant-selector ************************************************
+************************************************************************/
+    .participant-selector {
+      display: none;
+    }
+
+/* client and participant info *********************************************
+************************************************************************/
+
+    .pdf-client-info {
+      display: block;
+      padding: 30px 15px 0;
+      .spacer {
+        display: none;
+      }
+      .participant-selector {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        width: 49%;
+        padding: 0;
+        .participant-container {
+          width: 49%;
+          display: inline-block;
+          padding: 0 5px;
+          vertical-align: top;
+          div {
+            margin: 0;
+            width: auto;
+          }
+          li {
+            font-size: 10px;
+            color: $default-text;
+            margin-bottom: 2px;
+            span {
+              display: inline;
+              font-size: 10px;
+              font-weight: 500;
+              margin: 0;
+            }
+          }
+        }
+        .participant-title {
+          border-bottom: none;
+          padding: 0;
+          height: auto;
+          line-height: 1.2;
+          margin-bottom: 8px;
+          font-size: 14px;
+          &:after {
+            display: none;
+          }
+        }
+        h5 {
+          margin: 0;
+          font-size: 10px;
+          font-weight: 300;
+        }
+        ul {
+              border: none;
+              display: block;
+              padding: 0px 0;
+              position: static;
+            }
+
+      }
+      .client-info-box {
+        width: 24%;
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 5px;
+        span {
+          font-size: 10px;
+        }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        li {
+          font-size: 10px;
+          color: $default-text;
+          margin-bottom: 2px;
+          span {
+            display: inline;
+            font-size: 10px;
+            font-weight: 500;
+            margin: 0;
+          }
+        }
+        .participant-icon-plus,
+        .participant-icon-person {
+          font-size: 14px;
+          margin-bottom: 8px;
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+
+/* report-reveal-container *********************************************
+************************************************************************/
+
+    .report-reveal-container {
+      .read-more {
+        display: none;
+      }
+      .report-reveal-chevron {
+        display: none;
+      }
+      &.no-reveal {
+        padding-bottom: 1.5rem;
+        .subtitle {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+    .report-reveal-inner {
+      display: block;
+    }
+    .thank-you-previde {
+      border: 0;
+      width: 100%;
+      position: static;
+      margin-bottom: 30px;
+      padding: 0;
+    }
+    .download-container {
+      display: none;
+    }
+  }
+  .report-icon-action-grape,
+  .report-icon-review-tangerine,
+  .report-icon-risk-apple,
+  .report-icon-dna-blueberry-lite,
+  .report-icon-review-apple
+  {
+    &:before {
+      display: inline-block;
+      width: 3.5rem;
+      height: 3.5rem;
+      top: -0.5rem;
+      left: -4.25rem;
+    }
+  }
+
+/* main-accordion ******************************************************
+************************************************************************/
+
+  .main-accordion {
+    padding: 0 0 0 1.25rem;
+    &.large-accordion {
+      .main-accordion-section-title {
+        font-size: 2rem;
+        border-bottom: 1px solid $grey-bg-lite;
+        margin-bottom: 1rem;
+      }
+      .main-accordion-content {
+        padding: 0;
+      }
+    }
+    .main-accordion-content {
+      display: block;
+    }
+    .main-accordion-section {
+      margin-bottom: 1rem;
+      border-bottom: none;
+    }
+    .main-accordion-section-title {
+      font-weight: 500;
+      &:after {
+        display: none;
+      }
+    }
+    .main-accordion-content-split {
+      h3 {
+        font-size: 1.35rem;
+      }
+    }
+  }
+
+/* variant-selector  ******************************************************
+************************************************************************/
+
+  .variant-selector {
+    counter-reset: section;
+
+    .variant-pdf-label {
+      display: block;
+      font-weight: 500;
+    }
+  }
+  .variant-list {
+    .variant-list-item {
+      td {
+        border: 1px solid $default-text;
+      }
+    }
+  }
+  .variant-selector-btn-container {
+    display: none;
+  }
+  .variant-container {
+    display: block;
+  }
+  .header {
+    position: relative;
+    box-shadow: initial;
+    height: 60px;
+    top: 0;
+    border-bottom: 1px solid $grey-bg-lite;
+    &:before {
+      display: inline-block;
+      content: url(../svg/print-icons/genepeeks-logo-color.svg);
+      position: absolute;
+      width: 160px;
+      height: 36px;
+      top: 10px;
+      left: 15px;
+      z-index: 100000;
+    }
+    .main-menu {
+      display: none;
+    }
+    .mobile-menu-toggle {
+      display: none;
+    }
+    .health-professionals-info {
+      display: none;
+    }
+  }
+  .header-logo {
+    display: none;
+  }
+  .hero#hero-report {
+    display: none;
+  }
+
+  .actions-footer {
+    display: none;
+  }
+  .diamond-sequence {
+    margin: 0 0 3rem -3.5%;
+    padding: 2rem 15px 0;
+    display: block;
+    &:before {
+      left: 3.5rem;
+      right: 3.5rem;
+      top: 4.7rem;
+    }
+    li {
+      padding: 8rem .5rem 0;
+      font-size: 12px;
+      &:after {
+        width: 4.5rem;
+        height: 4.5rem;
+        top: 0.5rem;
+        left: calc(50% - 2.25rem);
+      }
+      &:before {
+        font-size: 2rem;
+        top: 1.25rem;
+      }
+    }
+  }
+  .dna-strand {
+    display: none;
+  }
+  .download-container {
+    display: none;
+  }
+  a.main-btn {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+

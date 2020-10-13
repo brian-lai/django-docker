@@ -1,0 +1,17 @@
+{% extends 'accounts/base_form.html' %}
+
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block html-title %}Reset Password{% endblock %}
+
+{% block form %}
+    <form id='login-form' action='{% host_url 'password_reset' host 'accounts' %}?token={{ request.GET.token }}' method='POST'>{% csrf_token %}
+
+        {{ form|crispy }}
+
+        <div id='login-button-container'>
+            <button type='submit' class='btn btn-inverse'>Reset Password!</button>
+        </div>
+    </form>
+{% endblock %}

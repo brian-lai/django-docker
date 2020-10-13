@@ -1,0 +1,20 @@
+{% extends 'core/blank.html' %}
+
+{% load staticfiles %}
+
+{% block css-imports %}
+    <link rel='stylesheet' href='{% static 'accounts/css/login.css' %}' />
+{% endblock %}
+
+{% block body-wrapper %}
+    <div id='login-wrapper'>
+        <div id='login-modal-wrapper' class='text-center'>
+            <div id='banner'>
+                <img src='{% static 'core/img/genepeeks-logo.svg' %}' />
+            </div>
+            <div>
+                {% block form %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

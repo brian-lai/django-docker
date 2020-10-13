@@ -1,0 +1,13 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "EmailMessage",
+  "potentialAction": {
+    "@type": "ViewAction",
+    "target": "{{ jsld.target }}",
+    "name": "{{ jsld.name }}",
+    "url": "{{ jsld.url|default:'https://www.genepeeks.com' }}"
+  },
+  "description": "{{ jsld.description }}"
+}
+</script>

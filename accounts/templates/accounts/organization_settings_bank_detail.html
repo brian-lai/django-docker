@@ -1,0 +1,29 @@
+{% extends 'accounts/organization_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+{% load primitive_types %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Bank' 'organization:bank:detail' pk=organization.pk division='bank' %}
+{% endblock %}
+
+{% block profile-content-title %}Bank Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_bank %}
+        {% host_url 'organization:bank:update' pk=organization.pk division='bank' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Bank' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Active</h4>
+        <p class='list-group-item-text'>
+            {% boolean organization.bank.active %}
+        </p>
+    </div>
+{% endblock %}

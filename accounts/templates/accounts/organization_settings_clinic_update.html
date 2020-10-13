@@ -1,0 +1,29 @@
+{% extends 'accounts/organization_settings_clinic_detail.html' %}
+
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Update' 'organization:clinic:update' pk=organization.pk division='clinic' %}
+{% endblock %}
+
+{% block profile-content-title %}Clinic Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_clinic %}
+        {% host_url 'organization:clinic:update' pk=organization.pk division='clinic' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Clinic' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <form method='POST' action="{% host_url 'organization:clinic:update' division='clinic' pk=organization.pk host 'accounts' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type='submit' class='btn blue' name='Submit' value='Submit'>Submit</button>
+    </form>
+{% endblock %}

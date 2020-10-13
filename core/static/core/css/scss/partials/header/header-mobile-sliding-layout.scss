@@ -1,0 +1,30 @@
+.main-menu-overlay {
+  background: transparent;
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s linear;
+  z-index: -200;
+}
+
+.mobile-nav-open {
+  height: 100%;
+  overflow: hidden;
+  .site-constraint {
+
+  }
+  .header {
+    .header-wrap {
+      .main-menu {
+        right: 0;
+      }
+    }
+  }
+  .main-menu-overlay {
+    background: rgba(255,255,255,0.8);
+    z-index: 200;
+  }
+}

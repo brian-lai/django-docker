@@ -1,0 +1,62 @@
+{% extends 'accounts/base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Accounts' 'root' %}
+    {% breadcrumb 'Organizations' 'organization:list' %}
+    {% breadcrumb organization.name 'organization:detail' pk=organization.pk %}
+{% endblock %}
+
+{% block html-title %}{{ organization.name }}'s Profile{% endblock %}
+
+{% block page-title %}{{ organization.name }}{% endblock %}
+
+{% block sidebar-title %}
+    <div class='profile-usertitle-name'>{{ organization.name }}</div>
+    <div class='profile-usertitle-job'>
+        {% with members_count=organization.members_order_by_last_login.count %}
+            <a href='{% host_url 'user:list' host 'accounts' %}?organization={{ organization.pk }}'>{{ members_count }} Member{% if members_count != 1 %}s{% endif %}</a>
+        {% endwith %}
+    </div>
+    <br/>
+    {% if organization.website %}
+        <div class='profile-stat-title'>{{ organization.website|urlize }}</div>
+    {% endif %}
+    {% if organization.address %}
+        <div class='profile-stat-title'>{{ organization.address }}</div>
+    {% endif %}
+    {% if organization.phone_number %}
+        <div class='profile-stat-title'>{{ organization.get_phone_number_display }}</div>
+    {% endif %}
+    <br/>
+{% endblock %}
+
+{% block sidebar-menu-detail-url %}{% host_url 'organization:detail' pk=organization.pk host 'accounts' %}{% endblock %}
+
+{% block sidebar-menu-settings-url %}{% host_url 'organization:settings:detail' pk=organization.pk host 'accounts' %}{% endblock %}
+
+{% block sidebar-menu-extra-items %}
+    {% if organization.bank %}
+        <li>
+            <a href='{% host_url 'organization:bank:detail' pk=organization.pk division='bank' host 'accounts' %}'>
+                <i class='glyphicons glyphicons-gender-intersex'></i> Bank
+            </a>
+        </li>
+    {% endif %}
+    {% if organization.clinic %}
+        <li>
+            <a href='{% host_url 'organization:clinic:detail' pk=organization.pk division='clinic' host 'accounts' %}'>
+                <i class='glyphicons glyphicons-doctor'></i> Clinic
+            </a>
+        </li>
+    {% endif %}
+    {% if organization.lab %}
+        <li>
+            <a href='{% host_url 'organization:lab:detail' pk=organization.pk division='lab' host 'accounts' %}'>
+                <i class='glyphicons glyphicons-lab'></i> Lab
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}

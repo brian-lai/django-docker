@@ -1,0 +1,168 @@
+@import "_mixins";
+@import "_variables";
+
+table {
+    thead {
+        tr {
+            th {
+                font-weight: 900 !important;
+                text-transform: capitalize;
+
+                a { color: #000000 !important; }
+
+                &.orderable, &.sortable {
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #F7F7F7;
+                    }
+
+                    &.asc:after, &.desc:after {
+                        font-family: 'Glyphicons Regular';
+                        font-style: normal;
+                        font-weight: normal;
+                        line-height: 1;
+                        vertical-align: top;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                        display: inline-block;
+                        padding: 3px 8px;
+                    }
+
+                    &.asc:after {
+                        content: "\E601";
+                    }
+
+                    &.desc:after {
+                        content: "\E602";
+                    }
+                }
+            }
+        }
+    }
+
+    tbody {
+        td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            // NOTE: Custom field sizing based on variant table displays
+            &.limit-field {
+                max-width: 90px;
+            }
+            &.large-limit-field {
+                max-width: 95px;
+            }
+            &.small-field {
+                min-width: 70px;
+            }
+            &.medium-field {
+                min-width: 95px;
+            }
+            &.large-field {
+                min-width: 105px;
+            }
+        }
+    }
+
+    &.table.table-striped {
+        & > tbody {
+            .glyphicons:before {
+                padding: 3px 0;
+            }
+        }
+        &.table-hover > tbody {
+            & > tr.selected, & > tr:hover {
+                &:nth-child(2n + 1) {
+                    @include rgba-background($genepeeks-green-rgb, 0.2);
+                }
+                &:nth-child(2n) {
+                    @include rgba-background($genepeeks-green-rgb, 0.1);
+                }
+            }
+        }
+    }
+}
+
+.ng-table {
+    table {
+        thead > tr > th .glyphicons {
+            &.glyphicons-chevron-up, &.glyphicons-chevron-down {
+                &:before {
+                    padding: 3px 0 0 3px;
+                }
+            }
+        }
+    }
+
+    .filter-container {
+        padding: 0 10px;
+
+        & > h3 {
+            margin-top: 0;
+        }
+
+        .filter {
+            position: relative;
+
+            & > select {
+                width: 80%;
+            }
+
+            .single-input { 
+                margin-top: 5px;
+                width: 80%;
+            }
+
+            .remove-conditional {
+                float: right;
+                margin-right: -20px;
+                margin-top: 6px;
+                cursor: pointer;
+            }
+
+            .toggle-filter {
+                margin-right: 7px;
+
+                &.glyphicons-eye-close {
+                    color: #999999;
+                }
+            }
+        }
+    }
+}
+
+.filter-container {
+    min-width: 150px;
+}
+
+nav {
+    &.pagination {
+        padding: 0 15px;
+    }
+
+    .pagination.pagination-input {
+        margin-left: 5px;
+
+        li {
+            &:hover {
+                background-color: inherit !important;
+            }
+
+            & > a {
+                cursor: default !important;
+                padding: 3px 10px 3px 10px;
+
+                &:hover {
+                    background-color: inherit !important;
+                    color: #0099FF;
+                }
+
+                input {
+                    width: 50px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

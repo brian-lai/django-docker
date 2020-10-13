@@ -1,0 +1,13 @@
+{% if auth_state_missing %}
+    <div class='alert alert-block alert-danger'><ul><li>We ran into a problem trying to log you in.<br/>Please try again!</li></ul></div>
+{% elif activate_account %}
+    <div class='alert alert-block alert-success'><ul><li>We are activating your account for the first time. Please check your email to set your password.</li></ul></div>
+{% elif token_consumed %}
+    <div class='alert alert-block alert-danger'><ul><li>Invite token has been used already.</li></ul></div>
+{% elif invalid_token %}
+    <div class='alert alert-block alert-danger'><ul><li>Invite token is invalid.</li></ul></div>
+{% elif reset_email_sent %}
+    <div class='alert alert-block alert-success'><ul><li>Check you email for your reset link.</li></ul></div>
+{% elif password_reset %}
+    <div class='alert alert-block alert-success'><ul><li>Your password has been successfully reset!</li></ul></div>
+{% endif %}

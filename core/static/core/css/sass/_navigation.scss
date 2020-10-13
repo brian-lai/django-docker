@@ -1,0 +1,25 @@
+.page-sidebar .page-sidebar-menu {
+    border: 1px solid #DDDDDD;
+    margin-top: 0;
+    
+    li > a > i[class^=glyphicons] {
+        margin-top: -5px;
+        margin-left: -5px;
+    }
+}
+
+@media (max-width: 991px) {
+    .page-header.navbar .menu-toggler.responsive-toggler {
+        margin-top: 25px;
+    }
+}
+
+.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar {
+    .page-logo .logo-default {
+        display: block;
+        position: absolute;
+    }
+    .menu-toggler.sidebar-toggler {
+        margin-right: 10px;
+    }
+}

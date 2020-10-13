@@ -1,0 +1,94 @@
+{% extends 'accounts/organization_base.html' %}
+
+{% load hosts %}
+{% load mathfilters %}
+{% load notes %}
+{% load staticfiles %}
+
+{% block user-detail-menu-overview %}active{% endblock %}
+
+{% block profile-content %}
+    <div class='profile-content'>
+        <div class='row'>
+            <div class='col-lg-6'>
+                <!-- BEGIN PORTLET -->
+                <div class='portlet light bordered'>
+                    <div class='portlet-title'>
+                        <div class='caption caption-md'>
+                            <i class='icon-bar-chart theme-font hide'></i>
+                            <span class='caption-subject font-blue-madison bold uppercase'>{{ organization.name }}'s Team</span>
+                        </div>
+                        {% if perms.auth.add_user %}
+                            <div class='page-actions actions'>
+                                <div class='btn-group'>
+                                    <a href='{% host_url 'organization:invite' pk=organization.pk host 'accounts' %}' class='btn btn-sm red-haze' data-toggle='modal' data-target="#dynamic-modal">
+                                        Add User
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class='portlet-body'>
+                        <div class='table-scrollable table-scrollable-borderless'>
+                            <table class='table table-hover table-light'>
+                                <thead>
+                                    <tr class='uppercase'>
+                                        <th colspan='2'>MEMBER</th>
+                                        <th>ACTIVE</th>
+                                        <th>EMAIL</th>
+                                        <th>LAST SEEN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% with members=organization.members_order_by_last_login members_count=organization.members_order_by_last_login.count %}
+                                        {% for member in members|slice:':5' %}
+                                            <tr>
+                                                <td class='fit'>
+                                                    <img class='user-pic' src='{% if member.profile.icon %}{{ member.profile.icon }}{% else %}{% static 'core/images/GenePeeks_Iconography_primary-44.svg' %}{% endif %}'>
+                                                </td>
+                                                <td>
+                                                    <a href='{% host_url 'user:detail' pk=member.pk host 'accounts' %}' class='primary-link'>{{ member.first_name }}</a>
+                                                </td>
+                                                <td>
+                                                    {% with record=member %}
+                                                        {% include 'accounts/columns/user_active_column.html' %}
+                                                    {% endwith %}
+                                                </td>
+                                                <td><a href='mailto:{{ member.email }}'>{{ member.email }}</a></td>
+                                                <td>{{ member.last_login }}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        {% if members_count > 5 %}
+                                            <tr>
+                                                <td colspan='4'>
+                                                    <p class='text-center' style='padding-top: 10px;'>
+                                                        <a href='{% host_url 'user:list' host 'accounts' %}?organization={{ organization.pk }}'>And {{ members_count|sub:5 }} more users...</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endwith %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PORTLET -->
+            </div>
+            <div class='col-md-6'>
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption caption-md">
+                            <i class="icon-bar-chart theme-font hide"></i>
+                            <span class="caption-subject font-blue-madison bold uppercase">Notes</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="max-height: 600px; overflow: auto;">
+                        {% render_notes organization %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

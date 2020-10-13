@@ -1,0 +1,51 @@
+{% extends 'accounts/user_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+{% load primitive_types %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Medical Officer' 'user:medical-officer:detail' pk=user.pk division='medical-officer' %}
+{% endblock %}
+
+{% block profile-content-title %}Medical Officer Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_medical_officer %}
+        {% host_url 'user:medical-officer:update' pk=user.pk role='medical-officer' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Medical Officer' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>NPI Number</h4>
+        <p class='list-group-item-text'>
+            {{ user.profile.medicalofficer.npi_number }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Degree(s)</h4>
+        <p class='list-group-item-text'>
+            {{ user.profile.medicalofficer.degree }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Proxy User(s)</h4>
+        <p class='list-group-item-text'>
+            {% for proxy in user.profile.medicalofficer.proxy_users.all %}
+                <a href="{{ proxy.get_absolute_url }}">{{ proxy.get_full_name }}</a> {% if not forloop.last %}, {% endif %}
+            {% empty %}
+                N/A
+            {% endfor %}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Standing Order</h4>
+        <p class='list-group-item-text'>
+            {% boolean user.profile.medicalofficer.standing_order %}{% if user.profile.medicalofficer.standing_order_file %} (<a href="{{ user.profile.medicalofficer.standing_order_file.url }}">download</a>){% endif %}
+        </p>
+    </div>
+{% endblock %}

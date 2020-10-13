@@ -1,0 +1,14 @@
+{% extends 'core/generics/base-create.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Accounts' 'root' %}
+    {% breadcrumb 'Users' 'user:list' %}
+    {% breadcrumb 'Create' '' %}
+{% endblock %}
+
+{% block html-title %}Create User{% endblock %}
+
+{% block page-title %}User{% endblock %}

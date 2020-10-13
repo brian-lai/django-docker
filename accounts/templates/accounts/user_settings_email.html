@@ -1,0 +1,22 @@
+{% extends 'accounts/user_settings_detail.html' %}
+
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Update' 'user:settings:update' pk=user.pk %}
+{% endblock %}
+
+{% block profile-content-title %}Which emails would you like to receive?{% endblock %}
+
+{% block detail-actions-edit %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <form action='{% host_url 'user:settings:email' pk=user.pk host 'accounts' %}' method='POST'>{% csrf_token %}
+        {{ form|crispy }}
+        <button type='submit' class='btn blue' name='Submit' value='Submit'>Submit</button>
+    </form>
+{% endblock %}

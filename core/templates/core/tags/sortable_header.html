@@ -1,0 +1,8 @@
+{% load django_tables2 %}
+
+<a href="{% querystring "sort"=field %}">
+    {{ title }}
+    {% if direction %}
+        <span class='glyphicons glyphicons-chevron-{{ direction }}' aria-hidden='true'></span>
+    {% endif %}
+</a>

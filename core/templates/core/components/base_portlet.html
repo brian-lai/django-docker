@@ -1,0 +1,16 @@
+<div id='{% block portlet-id %}{% endblock %}' class='portlet light borderless'>
+    <div class='portlet-title'>
+        <div class='caption'>
+            <i class='{% block portlet-icon %}{% endblock %} font-theme-color'></i>
+            <span class='caption-subject bold uppercase font-theme-color'>{% block portlet-header %}{% endblock %}</span>
+            <span class='caption-helper'>{% block portlet-caption-helper %}{% endblock %}</span>
+            <div class='caption-desc font-grey-cascade'>{% block portlet-caption-description %}{% endblock %}</div>
+        </div>
+        <div class='actions'>
+            {% block portlet-actions %}{% endblock %}
+        </div>
+    </div>
+    <div class='portlet-body'>
+        {% block portlet-body %}{% endblock %}
+    </div>
+</div>

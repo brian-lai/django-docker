@@ -1,0 +1,21 @@
+.page-head .page-title > h1 {
+    font-size: 24px !important;
+    font-weight: 600;
+
+    i {
+        font-weight: 300;
+        margin-right: 5px;
+    }
+}
+
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle>img {
+    margin-left: 0;
+}
+
+
+// XS LAYOUT
+@media (max-width: 767px) {
+    .page-content-wrapper .page-content .page-title {
+        margin-bottom: 0;
+    }
+}

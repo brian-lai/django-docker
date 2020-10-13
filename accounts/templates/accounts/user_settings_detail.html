@@ -1,0 +1,51 @@
+{% extends 'accounts/user_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Settings' 'user:settings:detail' pk=user.pk %}
+{% endblock %}
+
+{% block profile-content-title %}Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if request.user == user or perms.gist.change_user %}
+        {% host_url 'user:settings:update' pk=user.pk host 'accounts' as url %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>First Name</h4>
+        <p class='list-group-item-text'>
+            {{ user.first_name }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Last Name</h4>
+        <p class='list-group-item-text'>
+            {{ user.last_name }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Date of Birth</h4>
+        <p class='list-group-item-text'>
+            {{ user.profile.date_of_birth|default:"Not Provided" }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Email Address</h4>
+        <p class='list-group-item-text'>
+            <a href='mailto:{{ object.organizer.email }}'>{{ user.email }}</a>
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Phone Number</h4>
+        <p class='list-group-item-text'>
+            {{ user.profile.phone_number|default:"Not Provided" }}
+        </p>
+    </div>
+{% endblock %}

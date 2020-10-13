@@ -1,0 +1,56 @@
+.page-bottom-logos-container {
+  background-color: #4D5258;
+}
+
+.page-bottom-logos {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
+}
+.logos-container {
+  display: inline-block;
+  height: 6.5rem;
+  text-align: center;
+  @media (max-width: $screen-md) {
+    height: 4.5rem;
+  }
+  @media (max-width: $screen-xs) {
+    height: 3.5rem;
+  }
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.no-flexbox {
+  .page-bottom-logos {
+    display: block;
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+    text-align: center;
+    &:after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+  }
+  .logos-container {
+    display: inline-block;
+    height: 6.5rem;
+    text-align: center;
+    width: 25%;
+    float: left;
+    @media (max-width: $screen-md) {
+      height: 4.5rem;
+    }
+    @media (max-width: $screen-xs) {
+      height: 3.5rem;
+    }
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

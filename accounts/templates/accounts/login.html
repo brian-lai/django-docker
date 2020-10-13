@@ -1,0 +1,30 @@
+{% extends 'accounts/base_form.html' %}
+
+{% load crispy_forms_tags %}
+{% load hosts %}
+{% load staticfiles %}
+
+{% block html-title %}Login{% endblock %}
+
+{% block form %}
+    <form id='login-form' action='{% host_url 'login' host 'accounts' %}?{{ query_string }}' method='POST'>{% csrf_token %}
+        <a href='{{ google_url }}?{{ query_string }}'>
+            <img id='google-icon' src='{% static 'accounts/img/btn_google_signin.png' %}' />
+        </a>
+
+        <div class='or-option'>-- or --</div>
+
+        {% include 'accounts/partials/_messages.html' %}
+
+        {{ form|crispy }}
+
+        <div id='login-button-container' class='form-group'>
+            <button type='submit' class='btn btn-inverse'>Sign In</button>
+        </div>
+        <div id='login-alt-container'>
+            <a id='forgot_button' href='{% host_url 'forgot_password' host 'accounts' %}?{{ query_string }}'>Forgot password?</a>
+            <br/><br/>
+            Don't have an account? <a href='{% host_url 'create_user' host 'accounts' %}?{{ query_string }}'>Sign Up</a>
+        </div>
+    </form>
+{% endblock %}

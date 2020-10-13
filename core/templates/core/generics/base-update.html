@@ -1,0 +1,58 @@
+{% extends 'core/blank.html' %}
+
+{% load crispy_forms_tags %}
+{% load icons %}
+
+{% block js-imports %}
+<!-- BEGIN JS IMPORTS -->
+    {{ block.super }}
+    {{ form.media }}
+
+<!-- END JS IMPORTS -->
+{% endblock %}
+
+{% block page-content %}
+    <div class='row {% block page-css-name %}{% endblock %}'>
+        <div class='col-xs-12'>
+            <!-- BEGIN CHART PORTLET-->
+            <div class='portlet light borderless'>
+                <div class='portlet-title'>
+                    {% block caption %}
+                    <div class='caption'>
+                        <i class='glyphicons glyphicons-pencil font-theme-color'></i>
+                        <span class='caption-subject bold uppercase font-theme-color'>Form</span>
+                        <span class='caption-helper'>{% block form-caption %}Edit & Update{% endblock %}</span>
+                    </div>
+                    {% endblock caption %}
+                    <div class='actions'>
+                        {% block update-actions-discard %}
+                            {# Discard Changes Icon #}
+                            {% large_action_icon 'glyphicons-dustbin' url=form.instance.get_absolute_url tooltip_message='Discard Changes' %}
+                        {% endblock %}
+
+                        {% block update-actions %}{% endblock %}
+                    </div>
+                </div>
+                <div class='portlet-body'>
+                    <div class='row'>
+                        <div class='col-xs-12'>
+                            {% block form-wrapper %}
+                                <form autocomplete='off' action='{{ request.path }}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}' method='POST' {% block form-attributes %}{% endblock %}>{% csrf_token %}
+                                    {% block form-content %}
+                                        {{ form|crispy }}
+                                    {% endblock %}
+
+                                    {% block extra_fields %}{% endblock %}
+
+                                    {% block form-buttons %}
+                                        <button type='submit' class='btn theme-color' name='_save'>{% block form-button-text %}Save{% endblock %}</button>
+                                    {% endblock %}
+                                </form>
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

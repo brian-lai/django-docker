@@ -1,0 +1,28 @@
+{% extends 'accounts/base_form.html' %}
+
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block html-title %}Forgot Password{% endblock %}
+
+{% block form %}
+    <form id='login-form' action='{% host_url 'forgot_password' host 'accounts' %}?{{ query_string }}' method='POST'>{% csrf_token %}
+        {% if not form.errors %}
+            <div class='alert alert-block alert-info'>
+                <ul>
+                    <li>Enter your email address to receive a password reset email.</li>
+                </ul>
+            </div>
+        {% endif %}
+
+        {{ form|crispy }}
+
+        <div id='login-button-container'>
+            <button type='submit' class='btn btn-inverse'>Send Email</button>
+        </div>
+        <div id='login-alt-container'>
+            <br/>
+            <a id='create-internal' href='{% host_url 'login' host 'accounts' %}?{{ query_string }}'>Back to login</a>
+        </div>
+    </form>
+{% endblock %}

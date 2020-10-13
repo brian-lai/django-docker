@@ -1,0 +1,15 @@
+{% extends 'core/emails/base.html' %}
+
+{% block content %}
+    <p>You are invited to join the GenePeeks clinic portal as a member of {{ organization }}.</p>
+    <p>You may use this secure portal to:</p>
+    <ol>
+        <li>Review and authorize patient screens</li>
+        <li>Review and manage patient results</li>
+    </ol>
+    <p>
+        <a href="{{ invite_url }}">Click here to activate your account</a>
+    </p>
+    <p>If you have trouble with the above link, copy/paste the following into your browser: {{ invite_url }}</p>
+    <p>Please don't hesitate to contact us with questions. We are always happy to help.</p>
+{% endblock %}

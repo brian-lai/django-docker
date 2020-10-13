@@ -1,0 +1,24 @@
+@import "_fonts";
+@import "_bootstrap.override";
+@import "_components.override";
+@import "_errors.override";
+@import "_light.override";
+@import "_layout.override";
+@import "_select2.override";
+@import "_invoice.override";
+
+a {
+    color: #5B9BD1;
+
+    &:hover { color: #5B87D1; }
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: SourcePro;
+}
+
+body {
+    // background-color: #F4F5F9;
+    // Fatigue
+    background-color: #FFFFFF;
+}

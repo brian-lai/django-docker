@@ -1,0 +1,38 @@
+{% if form %}
+<form
+    action='{{ url }}'
+    method='POST'
+    id='{{ css_id|add:'-form' }}'
+>
+{% csrf_token %}
+{% endif %}
+    {% if form or confirm_action %}
+    <button
+        id='{{ css_id|default:'id_confirm_action' }}'
+        class='btn icon-btn'
+        {% if confirm_action %}
+        type='button' data-toggle='confirmation' data-original-title='{{ confirm_message }}' data-placement='bottom'
+        {% else %}
+        type='submit' name='perform' value='true'
+        {% endif %}
+        {% for key, val in data_attrs.iteritems %}{{ key }}='{{ val }}'{% endfor %}
+    >
+        <i class='{{ icon }}'></i>
+        <div> {{ tooltip_message }} </div>
+    </button>
+    {% else %}
+    <a
+        href='{{ url }}'
+        id='{{ css_id }}'
+        class='btn icon-btn{% if highlight %} font-white theme-color{% endif %}'
+        {% if modal %}data-toggle='modal'{% endif %}
+        {% if download %}download{% endif %}
+        {% for key, val in data_attrs.iteritems %}{{ key }}='{{ val }}'{% endfor %}
+    >
+        <i class='{{ icon }}'></i>
+        <div> {{ tooltip_message }} </div>
+    </a>
+    {% endif %}
+{% if form %}
+</form>
+{% endif %}

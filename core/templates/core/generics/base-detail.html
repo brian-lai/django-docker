@@ -1,0 +1,64 @@
+{% extends 'core/blank.html' %}
+
+{% load core_filters %}
+{% load icons %}
+{% load hosts %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-xs-12'>
+            <!-- BEGIN Portlet PORTLET-->
+            <div class='portlet light borderless'>
+                <div class='portlet-title tabbable-line'>
+                    <ul class='nav nav-tabs nav-tabs-left'>
+                        {% block summary-tab %}
+                            <li class='active'>
+                                <a href='#summary' data-toggle='tab' aria-expanded='false'>Summary</a>
+                            </li>
+                        {% endblock %}
+                        {% block tabs-header %}{% endblock %}
+                    </ul>
+                    <div class='actions'>
+                        {% with content_type=object|content_type %}
+                            {% block detail-actions-edit %}
+                                {# Edit Object Icon #}
+                                {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit '|add:content_type.model|title %}
+                            {% endblock %}
+
+                            {% block detail-model-actions %}
+                                {% if roles.gene_peeks_staff %}
+                                    {% if request.user.is_staff %}
+                                    {# Edit on Admin Site Icon #}
+                                        {% host_url 'admin:'|add:content_type.app_label|add:'_'|add:content_type.model|add:'_change' object.pk host 'dashboard' as admin_edit_url %}
+                                        {% large_action_icon 'glyphicons-database' url=admin_edit_url tooltip_message='Edit on Admin' %}
+                                    {% endif %}
+
+                                    {# Object Audit History Icon #}
+                                    {% comment %}
+                                        {% host_url 'history' content_type=content_type.id object_id=object.id host 'dashboard' as audit_url %}
+                                        {% large_action_icon 'glyphicons-one-day' url=audit_url tooltip_message='View Object Audit' modal=True %}
+                                    {% endcomment %}
+                                {% endif %}
+                            {% endblock %}
+                        {% endwith %}
+
+                        {% block detail-actions %}{% endblock %}
+                    </div>
+                </div>
+                <div class='portlet-body'>
+                    <div class='row'>
+                        <div class='col-xs-12'>
+                            <div class='tab-content'>
+                                <div id='summary' role='tabpanel' class='tab-pane active'>
+                                    {% block tab-summary %}{% endblock %}
+                                </div>
+                                {% block tabs-content %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Portlet PORTLET-->
+        </div>
+    </div>
+{% endblock %}

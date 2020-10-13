@@ -1,0 +1,11 @@
+.callout {
+  border-radius: 1.25rem;
+  border: 1px solid $grey-lite;
+  background: $grey-bg;
+  padding: 2rem;
+  margin: 2.5rem 0;
+  .subtitle {
+    font-size: 2rem;
+    color: $grey;
+  }
+}

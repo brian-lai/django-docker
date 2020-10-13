@@ -1,0 +1,48 @@
+/*                        MIXIN DEFINITIONS                     */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-radius-all($nw, $ne, $se, $sw) {
+  -webkit-border-radius: $nw $ne $se $sw;
+     -moz-border-radius: $nw $ne $se $sw;
+      -ms-border-radius: $nw $ne $se $sw;
+          border-radius: $nw $ne $se $sw;
+}
+
+@mixin user-select($status) {
+    -webkit-user-select: $status;
+       -moz-user-select: $status;
+        -ms-user-select: $status;
+            user-select: $status;
+}
+
+@mixin box-sizing() {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+@mixin animate($type, $duration) {
+  -webkit-animation: $type $duration linear infinite;
+  -moz-animation: $type $duration linear infinite;
+  animation: $type $duration linear infinite;
+}
+
+@mixin rgba-background($rgb, $a) {
+  background-color: rgba(nth($rgb, 1), nth($rgb, 2), nth($rgb, 3), $a);
+}
+
+/* Takes in two colors and calculates the composite, given an alpha value. */
+@function rgba-calc($color, $background, $a) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+    $rb: red($background);
+    $gb: blue($background);
+    $bb: green($background);
+    @return rgb($r + (($rb - $r) * $a), $g + (($gb - $g) * $a), $b + (($bb - $b) * $a))
+}

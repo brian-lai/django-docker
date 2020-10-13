@@ -1,0 +1,14 @@
+{% extends 'core/modals/base-modal.html' %}
+
+{% load crispy_forms_tags %}
+{% load hosts %}
+
+{% block modal-title %}Invite User{% endblock %}
+
+{% block modal-body %}
+    <form action='{% host_url 'organization:invite' pk=form.organization.value host 'accounts' %}' method='POST' role='form'>{% csrf_token %}
+        {{ form|crispy }}
+
+        <button type='submit' class='btn green'>Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,329 @@
+/* variables for box shadows, used on input:focus */
+$shadow-size: 0 0 10px;
+$shadow-alpha: 0.15;
+
+label, .page-header {
+  font-size: 1.75rem;
+  color: $grey;
+  font-weight: 200;
+  position: relative;
+}
+
+.page-header {
+  border-bottom: 1px solid $grey-lite;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  p {
+    margin: 0.75rem 0;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    &:last-child {
+      //margin-bottom: 0;
+    }
+  }
+  >* {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+$input-height: 2.8125rem;
+
+.form-control {
+
+}
+
+.form-control, body .select2-container--default .select2-selection--single {
+  padding: 0 30px;
+  height: $input-height;
+  font-size: 1.25rem;
+  // border-radius: 0.9375rem;
+  border-color: $grey-lite;
+  box-shadow: none;
+  color: $default-text;
+  transition: border 0.15s;
+  @media (max-width: $screen-xs) {
+    height: 33px;
+    font-size: 15px;
+    border-radius: 11px;
+  }
+  &:focus {
+    border-color: $blue;
+    box-shadow: $shadow-size rgba($blue, $shadow-alpha);
+    outline: none;
+    &[readonly] {
+      border-color: $grey-lite;
+      box-shadow: none;
+    }
+  }
+  &[disabled], &[readonly] {
+    background-color: $grey-bg;
+  }
+}
+
+.radio, .checkbox {
+  label {
+    font-size: 1.25rem;
+    color: $default-text;
+    padding-left: 30px;
+    font-weight: 300;
+    position: relative;
+    display: inline-block;
+    &:before {
+      cursor: pointer;
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background: $white;
+      box-shadow: 0 0 0 1px $grey-lite;
+      margin-left: -2px;
+      margin-top: -5px;
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+  }
+  input {
+    &[type=radio], &[type=checkbox] {
+      padding: 0;
+      height: 0;
+      width: 0;
+      margin: 0;
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      border: none !important;
+      outline: none !important;
+      -webkit-appearance: none !important;
+    }
+  }
+}
+
+.checkbox {
+  label {
+    &:before {
+      border-radius: 2px;
+      color: #fff;
+      content: "\f00c";
+      font-family: "FontAwesome", sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding: 0;
+    }
+    &.checked {
+      &:before {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.radio {
+  label {
+    &:before {
+      display: inline-block;
+      border: 9px solid #fff;
+      border-radius: 100%;
+    }
+  &.checked {
+      &:before {
+        display: inline-block;
+        background: $blue;
+        border: 3px solid #fff;
+      }
+    }
+  }
+}
+
+input, input.form-control {
+  @include placeholder {
+    font-size: 1.25rem;
+    color: $grey-lite;
+  }
+  &:invalid:focus, &[invalid] {
+    border: 1px solid $watermelon;
+  }
+  &[readonly] {
+    @include placeholder {
+      color: $default-text;
+    }
+  }
+  &:focus {
+    &:invalid, &[invalid] {
+      box-shadow: $shadow-size rgba($watermelon, $shadow-alpha);
+    }
+    &:not([readonly]) {
+      @include placeholder {
+        color: transparent;
+        opacity: 0;
+      }
+    }
+  }
+  &[type=text] {
+    &[readonly] {
+      background: lighten($grey-lite, 15%);
+      border: 1px solid $grey-lite;
+    }
+  }
+}
+
+
+.select, body .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  &:after {
+    content: "\f0d7";
+    font-family: "FontAwesome", sans-serif;
+    position: absolute;
+    font-size: 1.875rem;
+    color: $blue;
+    z-index: 1;
+    cursor: pointer;
+  }
+}
+
+.select {
+  position: relative;
+  &:after {
+    right: 20px;
+    top: 3px;
+  }
+}
+
+body {
+  .select2-container {
+    width: 100% !important;
+    min-width: 0 !important;
+    &:focus {
+      border-color: $blue;
+      box-shadow: $shadow-size rgba($blue, $shadow-alpha);
+      outline: none;
+    }
+  }
+  .select2-container--default {
+    .select2-selection--single {
+      padding: 0 50px 0 30px;
+      .select2-selection__arrow b {
+        border-width: 0;
+        &:after {
+          top: -9px;
+          right: 5px;
+        }
+      }
+    }
+    .select2-search--dropdown {
+      .select2-search__field {
+        border: 1px solid $grey-lite;
+        &:focus {
+          border-color: $blue;
+          box-shadow: $shadow-size rgba($blue, $shadow-alpha);
+          outline: none;
+        }
+      }
+    }
+    &.select2-container--open {
+      .select2-selection--single {
+        .select2-selection__arrow {
+          b {
+            border-width: 0;
+          }
+        }
+      }
+    }
+  }
+  .select2-dropdown {
+    border: 1px solid $grey-lite;
+  }
+}
+
+select, select.form-control {
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+  padding-right: 50px;
+  color: $grey-lite;
+  position: relative;
+  z-index: 2;
+  &.checked, &:checked {
+    color: $default-text;
+  }
+  &:invalid, &[invalid] {
+    border: 1px solid $watermelon;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.barcode {
+  padding: 0 5px 0 15px;
+  margin-bottom: 30px;
+  .form-group {
+    padding-left: 0;
+    padding-right: 10px;
+    height: 2.5rem;
+    margin-bottom: 5px;
+    &:first-of-type {
+
+    }
+    &:last-of-type {
+      margin-right: -10px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 5px;
+      text-align: center;
+    }
+  }
+  .form-error, .error {
+    padding-top: 10px;
+  }
+}
+
+.form-error, .error {
+  margin: 8px 0 0;
+  color: $watermelon;
+  display: block;
+  clear: both;
+}
+
+.checkbox {
+  .form-error, .error {
+    margin: 0;
+  }
+}
+
+.citation {
+  &:after {
+    content: "*";
+    color: $watermelon;
+    margin-left: 5px;
+  }
+}
+
+.citation-text {
+  &:before {
+    content: "*";
+    color: $watermelon;
+    margin-right: 5px;
+  }
+}
+
+.form-grouping {
+  margin-bottom: 30px;
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .error {
+    margin: 0;
+    padding-left: 15px;
+  }
+}

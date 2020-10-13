@@ -1,0 +1,97 @@
+@import '_mixins';
+@import '_variables';
+
+// Custom colors
+.font-theme-color {
+    color: $theme-color !important;
+
+    a {
+        color: $theme-color !important;
+    }
+}
+
+.theme-color {
+    color: #FFFFFF !important;
+    background-color: $theme-color !important;
+    border-color: $theme-color !important;
+}
+
+@mixin unselected-theme-element() {
+    color: rgba-calc($theme-color, #FFF, 0.3) !important;
+}
+
+@mixin selected-theme-element() {
+    color: $theme-color !important;
+}
+
+// Menu Icons
+.profile-usermenu ul.nav > li {
+    &:hover,
+    &.active {
+        & > a {
+            @include unselected-theme-element();
+
+            & > i {
+                @include selected-theme-element();
+            }
+        }
+    }
+    & > a > i {
+         @include unselected-theme-element();
+    }
+}
+
+.page-sidebar .page-sidebar-menu {
+    &,
+    & .sub-menu {
+        & > li {
+            &:hover > a,
+            & > a > i,
+            & > a > .arrow:before {
+                @include unselected-theme-element();
+            }
+            &:hover > a > i,
+            & > a > .arrow.open:before {
+                @include selected-theme-element();
+            }
+            &.active,
+            &.open {
+                & > a .title {
+                    @include unselected-theme-element();
+                }
+                & > a > i {
+                    @include selected-theme-element();
+                }
+            }
+        }
+    }
+}
+
+.page-sidebar .page-sidebar-menu > li.active > a,
+.profile-usermenu ul.nav > li.active > a {
+    border-color: $theme-color !important;
+}
+
+
+// Pagination
+.pagination > .active {
+    & > a,
+    & > span {
+        &,
+        &:focus,
+        &:hover {
+            background-color: $theme-color !important;
+            border-color: $theme-color !important;
+        }
+    }
+}
+
+// Tabs
+.tabbable-line > .nav-tabs > li {
+    &:hover:not(.active) {
+        border-color: rgba-calc($theme-color, #FFF, 0.4) !important;
+    }
+    &.active {
+        border-color: $theme-color;
+    }
+}

@@ -1,0 +1,50 @@
+.user-flow {
+  padding-top: 50px;
+  @media (max-width: $screen-md) {
+    padding-top: 50px;
+  }
+  .heading {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 40px;
+    @media (max-width: $screen-md) {
+      //padding-left: 55px;
+    }
+  }
+  nav {
+    ul {
+      margin-left: 0;
+    }
+    text-align: right;
+  }
+  .order-total {
+    text-align: right;
+    dt, dd {
+      display: inline;
+      color: $grey-lite;
+      font-size: 2rem;
+      font-weight: 300;
+    }
+    dt {
+      float: none;
+    }
+    dd {
+      margin-left: 0;
+      &:before {
+        display: inline;
+      }
+    }
+  }
+  ol {
+    li {
+      &, p {
+        color: $default-text;
+      }
+      &:before {
+        color: $blue;
+      }
+    }
+  }
+}
+

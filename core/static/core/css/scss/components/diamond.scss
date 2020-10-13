@@ -1,0 +1,53 @@
+.diamond {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  top: -7px;
+  left: -67px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $tangerine;
+  @media (max-width: $screen-md) {
+    display: block;
+    width: 40px;
+    top: -10px;
+    left: 0px;
+    font-size: 18px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  &:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 120px;
+    position: absolute;
+    top: -120px;
+    left: 9px;
+    z-index: -2;
+    background: $grey-lite;
+    @media (max-width: $screen-md) {
+      display: none;
+    }
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    top: -44px;
+    left: -42px;
+    z-index: -1;
+    transform: rotate(45deg);
+    transform-origin: 0 100%;
+    background: #fff;
+    border: 1px solid $tangerine;
+    @media (max-width: $screen-md) {
+      top: -17px;
+      left: -2px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@mixin svg-color($name, $color1, $color2) {
+  .#{$name} &, &.#{$name} {
+    .st0 {
+      stroke: $color1;
+    }
+    .st1, .st2 {
+      fill: $color2;
+    }
+  }
+}
+
+.diamond-icon {
+
+}
+
+.diamond-svg {
+  .st0, .st1, .st2 {
+
+  }
+  .st0 {
+    stroke-miterlimit: 10;
+    fill: #FFFFFF;
+    stroke: $gene;
+  }
+  .st1, .st2 {
+    fill: $gene-lite;
+  }
+  .st1 {
+
+  }
+  .st2 {
+    opacity:0.5;
+  }
+
+  @include svg-color('blueberry', $blueberry, $blueberry-lite);
+  @include svg-color('apple', $apple, $apple-lite);
+  @include svg-color('grape', $grape, $grape-lite);
+  @include svg-color('watermelon', $watermelon, $watermelon-lite);
+  @include svg-color('tangerine', $tangerine, $tangerine-lite);
+  @include svg-color('lemon', $lemon, $lemon-lite);
+
+  &.diamond-svg-create {
+    .st1, .st2 {
+      stroke-miterlimit: 10;
+      stroke-width:0.5;
+    }
+  }
+  &.diamond-svg-about {
+    .st1 {
+      opacity: 0.9;
+    }
+    .st2 {
+      /* third color ? */
+      //fill: #34C2DD;
+    }
+  }
+  &.diamond-svg-results {
+    .st2 {
+      fill-rule: evenodd;
+      clip-rule: evenodd;
+    }
+  }
+  &.diamond-svg-factors {
+    .st2 {
+      opacity: 0.75;
+    }
+    .st3 {
+      opacity: 0.5;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

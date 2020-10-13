@@ -1,0 +1,22 @@
+@import "_header";
+@import "_mixins";
+@import "_navigation";
+@import "_tables";
+
+
+.page-container {
+    padding-top: 5px;
+
+    .page-content {
+        padding-top: 0;
+    }
+}
+
+/*                        LOADING ICON                           */
+.loading-icon {
+    @include animate(spin, 2s);
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+

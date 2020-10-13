@@ -1,0 +1,16 @@
+{# Is the button a link or an action #}
+{% if form %}
+<form id='{{ action_css_id|add:'-form' }}' action='{{ url }}' method='POST'>{% csrf_token %}
+{% endif %}
+    <span data-toggle='tooltip' data-placement='top' title='{{ tooltip_message }}'>
+        {% if form or confirm_action %}
+            <button id='{{ action_css_id|default:'id_confirm_action' }}' class='btn btn-circle btn-icon-only btn-default' {% if confirm_action %}type='button' data-toggle='confirmation' data-original-title='{{ confirm_message }}' data-placement='bottom'{% else %}type='submit' name='perform' value='true'{% endif %}{% for key, val in data_attrs.iteritems %} {{ key }}='{{ val }}'{% endfor %}>
+                <i class='{{ icon }}'></i>
+            </button>
+        {% else %}
+            <a id='{{ action_css_id|default:'id_anchor' }}' href='{{ url }}' class='btn btn-circle btn-icon-only btn-default {{ icon }}{% if highlight %} font-white theme-color{% endif %}' {% if modal %}data-toggle='modal'{% endif %}{% if download %} download{% endif %}{% for key, val in data_attrs.iteritems %} {{ key }}='{{ val }}'{% endfor %}></a>
+        {% endif %}
+    </span>
+{% if form %}
+</form>
+{% endif %}

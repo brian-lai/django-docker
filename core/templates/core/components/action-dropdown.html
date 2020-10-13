@@ -1,0 +1,14 @@
+<div class='page-actions actions'>
+    <div class='btn-group'>
+        <button class='btn btn-sm red-haze' href='javascript:;' data-toggle='dropdown' data-hover='dropdown' data-close-others='true' aria-expanded='true'> Actions
+            <i class='fa fa-angle-down'></i>
+        </button>
+        <ul class='dropdown-menu pull-right'>
+            {% block action-items %}
+                {% for item in items %}
+                    {% include 'core/components/action-dropdown-item.html' %}
+                {% endfor %}
+            {% endblock %}
+        </ul>
+    </div>
+</div>

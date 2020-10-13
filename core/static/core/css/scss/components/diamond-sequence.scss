@@ -1,0 +1,64 @@
+.diamond-sequence {
+  display: block;
+  width: 105%;
+  height: auto;
+  margin: 0 0 3rem -2.5%;
+  padding:  3rem 0 0;
+  position: relative;
+  list-style-type: none;
+    @media (max-width: $screen-sm){
+    display: none;
+  }
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+  &:before {
+    display: block;
+    content: '';
+    background: $grey-bg-lite;
+    height: 1px;
+    position: absolute;
+    top: 5.7rem;
+    left: 3.5rem;
+    right: 3.5rem;
+  }
+  li{
+    display: inline-block;
+    width: 20%;
+    float: left;
+    color: $default-text;
+    font-weight: 400;
+    font-size: 1.125rem;
+    padding: 9rem 0.5rem 0;
+    position: relative;
+    text-align: center;
+    &:after {
+      background: $white;
+      border: 1px solid $blueberry-lite;
+      display: inline-block;
+      content: '';
+      width: 5.5rem;
+      height: 5.5rem;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 2.75rem);
+      z-index: 1;
+      transform: rotate(45deg);
+    }
+    &:before {
+      display: inline-block;
+      content: counter(a);
+      position: absolute;
+      color: $blueberry-lite;
+      width: 100%;
+      font-size: 2.5rem;
+      text-align: center;
+      top: 1rem;
+      left:0;
+      z-index: 2;
+    }
+  }
+}

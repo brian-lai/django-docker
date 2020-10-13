@@ -1,0 +1,264 @@
+a.btn, button.btn, .btn {
+  font-size: 1.0625rem;
+  position: relative;
+  font-weight: bold;
+  padding: 0;
+  color: $blue;
+  background: none;
+  &:hover, &:focus, &:active, &:active:focus {
+    color: lighten($blue, 8%);
+    outline: none;
+    box-shadow: none;
+  }
+  &.disabled, &[disabled], &:disabled {
+    color: $grey-lite;
+  }
+
+  &.btn-primary {
+    background: $grey;
+    border: 1px solid $grey;
+    color: #fff;
+    padding: 5px 30px;
+    border-radius: 20px;
+    font-weight: 500;
+    &:hover, &:focus, &:active, &:focus:active {
+      background: darken($grey, 8%);
+      color: #fff;
+      border: 1px solid $grey;
+    }
+  }
+  &.btn-link {
+    font-size: inherit;
+    font-weight: inherit;
+    &:hover, &:focus, &:active, &:focus:active {
+      color: lighten($blue, 8%);
+      text-decoration: none !important;
+    }
+  }
+}
+
+
+.main-btn {
+  display: inline-block;
+  background: #717F8F;
+  border: 1px solid #717F8F;
+  color: #fff;
+  min-width: 225px;
+  padding: 5px 2.25rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  text-transform: lowercase;
+  @media (max-width: $screen-lg) {
+    font-size: 1.25rem;
+    min-width: 190px;
+  }
+  @media (max-width: $screen-sm) {
+    font-size: 1.5rem;
+    min-width: 160px;
+  }
+  &:hover, &:focus, &:active, &:focus:active {
+    background: darken(#717F8F, 8%);
+    color: #fff;
+    border: 1px solid #717F8F;
+  }
+  &.disable-anchor {
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover, &:focus, &:active, &:focus:active {
+      background: #717F8F;
+      color: #fff;
+      border: 1px solid #717F8F;
+    }
+  }
+}
+
+.secondary-btn {
+  background: $white;
+  border-radius: 1rem;
+  border: 1px solid $grey-bg-lite;
+  color: $default-text;
+  display: inline-block;
+  font-size: 1.25rem;
+  min-width: 200px;
+  padding: 0.375rem 1.75rem;
+  text-align: center;
+  margin-right: 1.25rem;
+  transition: $hover;
+  cursor: pointer;
+  margin-bottom: 10px;
+  &:hover {
+    background: $grey-lite;
+    color: $white;
+  }
+  &.active {
+    background: $grey-lite;
+    color: $white;
+    &:hover {
+      background: darken($grey-lite, 10%);
+      color: $white;
+    }
+  }
+}
+
+.small-btn {
+  display: inline-block;
+  background: $grey;
+  border: 1px solid $grey;
+  color: #fff;
+  padding: 0.25rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  &:hover, &:focus, &:active, &:focus:active {
+    background: darken($grey, 8%);
+    color: #fff;
+    border: 1px solid $grey;
+  }
+}
+
+.btn-play {
+  border-radius: 50%;
+  display: block;
+  width: 8.8125rem;
+  height: 8.8125rem;
+  position: relative;
+  transition: $hover;
+  cursor: pointer;
+  animation: playpulse2 4s linear 0s 2;
+  &:before {
+    color: rgba(255,255,255,0.8);
+    display: inline-block;
+    content: url(../img/icons/play-outline.svg);
+    font-family: Fontawesome;
+    font-size: 4.75rem;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    text-align: center;
+    transition: $hover;
+    cursor: pointer;
+  }
+  &:after {
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.8);
+    display: inline-block;
+    content: '';
+    width: 8.8125rem;
+    height: 8.8125rem;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 0;
+  }
+  &:hover {
+    background: rgba(255,255,255,0.3);
+  }
+  &:hover:before {
+    opacity: 1;
+  }
+  &.play-click {
+    &:after {
+      animation: playpulse 0.5s linear 0s 1;
+    }
+  }
+}
+
+@keyframes playpulse {
+  40% {width: 9.5rem; height: 9.5rem; border: 0.5rem solid rgba(255,255,255,0.4);}
+  100% {width: 10.5rem; height: 10.5rem; border: 0rem solid rgba(255,255,255,0.4);}
+}
+
+@keyframes playpulse2 {
+  50% {background: rgba(255,255,255,0.2); box-shadow: 0 0 5px 5px rgba(255,255,255,0.3);}
+}
+
+.btn-pager {
+  border: none;
+}
+
+.btn-pager:before, .btn-pager:after {
+  font-family: "FontAwesome", sans-serif;
+  font-size: 2.25rem;
+  position: absolute;
+  top: -0.9375rem;
+}
+
+.pager {
+  li {
+    > a, > span {
+      padding: inherit;
+      background-color: inherit;
+      border: inherit;
+      border-radius: inherit;
+
+    }
+    > a {
+      &:focus, &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+}
+
+.previous {
+  float: left;
+  .btn-pager{
+    padding-left: 2rem;
+    &:before {
+      content: "\f104";
+      left: -4px;
+    }
+  }
+}
+
+.next {
+  float: right;
+  .btn-pager {
+    padding-right: 2rem;
+    &:after {
+      content: "\f105";
+      right: -4px;
+    }
+  }
+}
+
+.main-btn-conainer {
+  width: 100%;
+  padding: 0px 0;
+  text-align: center;
+  .main-btn {
+    &:first-of-type {
+      margin-right: 30px;
+    }
+    @media (max-width: $screen-lg) {
+      font-size: 1.25rem;
+      min-width: 190px;
+      &:first-of-type {
+        margin-right: 20px;
+      }
+    }
+    @media (max-width: $screen-sm) {
+      font-size: 1.5rem;
+      min-width: 160px;
+      &:first-of-type {
+        margin-right: 20px;
+      }
+    }
+    &:first-of-type {
+    }
+    &:last-of-type {
+    }
+  }
+}
+

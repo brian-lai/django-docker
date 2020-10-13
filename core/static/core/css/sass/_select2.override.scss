@@ -1,0 +1,21 @@
+.select2-container {
+    $height: 36px;
+    min-width: 20px !important;
+
+    .select2-selection--single {
+        border-color: #CCCCCC !important;
+        height: $height !important;
+
+        .select2-selection__arrow b {
+            margin-top: 1px !important;
+        }
+
+        .select2-selection__rendered {
+            line-height: ($height - 4px) !important;
+        }
+    }
+}
+
+.modal-dialog .select2.select2-container {
+    width: 100% !important;
+}

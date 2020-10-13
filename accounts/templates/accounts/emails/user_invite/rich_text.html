@@ -1,0 +1,9 @@
+{% extends 'core/emails/base.html' %}
+
+{% block content %}
+    You have been invited to join {{ organization }} @ {{ admin_group }}!<br/>
+    <a href="{{ invite_url }}">Click here</a> to active your account!<br/><br/>
+    If you are having trouble with the link above, copy-paste the following into your web browser: {{ invite_url }}<br/>
+{% endblock %}
+
+{% block footer %}{% endblock %}

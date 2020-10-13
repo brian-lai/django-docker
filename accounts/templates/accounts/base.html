@@ -1,0 +1,111 @@
+{% extends 'core/generics/base-detail.html' %}
+
+{% load core_filters %}
+{% load hosts %}
+{% load icons %}
+{% load staticfiles %}
+
+{% block accounts-app-navigation %}active{% endblock %}
+{% block accounts-app-navigation-arrow %}open{% endblock %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <link href='{% static 'accounts/css/accounts.css' %}' rel='stylesheet' type='text/css' />
+{% endblock %}
+
+{% block page-subtitle %}Profile & Settings{% endblock %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-md-12'>
+
+            <!-- BEGIN PROFILE SIDEBAR -->
+            <div class='profile-sidebar'>
+                <!-- PORTLET MAIN -->
+                <div class='portlet light profile-sidebar-portlet bordered'>
+                    <!-- SIDEBAR AVATAR -->
+                    <div class='profile-userpic'>
+                        {% block sidebar-avatar %}
+                            <img src='{% static 'core/images/GenePeeks_Iconography_primary-44.svg' %}' class='img-responsive' alt=''>
+                        {% endblock %}
+                    </div>
+                    <!-- END SIDEBAR AVATAR -->
+                    <!-- SIDEBAR TITLE -->
+                    <div class='profile-usertitle'>
+                        {% block sidebar-title %}{% endblock %}
+                    </div>
+                    <!-- END SIDEBAR TITLE -->
+
+                    <!-- SIDEBAR MENU -->
+                    <div class='profile-usermenu'>
+                        <ul class='nav'>
+                            <li>
+                                <a href='{% block sidebar-menu-detail-url %}{% endblock %}'>
+                                    <i class='glyphicons glyphicons-home'></i> Overview
+                                </a>
+                            </li>
+                            <li>
+                                <a href='{% block sidebar-menu-settings-url %}{% endblock %}'>
+                                    <i class='glyphicons glyphicons-cogwheel'></i> Settings
+                                </a>
+                            </li>
+                            {% block sidebar-menu-extra-items %}{% endblock %}
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+                <!-- END PORTLET MAIN -->
+                {% block sidebar-stat %}{% endblock %}
+            </div>
+            <!-- END BEGIN PROFILE SIDEBAR -->
+
+            <!-- BEGIN PROFILE CONTENT -->
+            {% block profile-content %}
+                <div class='profile-content'>
+                    <div class='row'>
+                        <div class='col-md-12'>
+                            <div class='portlet light'>
+                                <div class='portlet-title tabbable-line'>
+                                    <div class='caption caption-md'>
+                                        <i class='icon-globe theme-font hide'></i>
+                                        <span class='caption-subject font-blue-madison bold uppercase'>{% block profile-content-title %}{% endblock %}</span>
+                                    </div>
+                                    <div class='actions'>
+                                        {% with content_type=object|content_type %}
+                                            {% block detail-actions-edit %}
+                                                {# Edit Object Icon #}
+                                                {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit '|add:content_type.model|title %}
+                                            {% endblock %}
+
+                                            {% block detail-model-actions %}
+                                                {% if roles.gene_peeks_staff %}
+                                                    {% if request.user.is_staff %}
+                                                    {# Edit on Admin Site Icon #}
+                                                        {% host_url 'admin:'|add:content_type.app_label|add:'_'|add:content_type.model|add:'_change' object.pk host 'dashboard' as admin_edit_url %}
+                                                        {% large_action_icon 'glyphicons-database' url=admin_edit_url tooltip_message='Edit on Admin' %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endwith %}
+
+                                        {% block detail-actions %}{% endblock %}
+                                    </div>
+                                </div>
+                                <div class='portlet-body'>
+                                    <div class='row'>
+                                        <div class='col-xs-12 col-sm-8 col-lg-6'>
+                                            <div class='list-group'>
+                                                {% block profile-content-body %}{% endblock %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            <!-- END PROFILE CONTENT -->
+        </div>
+    </div>
+{% endblock %}

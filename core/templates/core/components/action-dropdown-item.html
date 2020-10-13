@@ -1,0 +1,15 @@
+<li>
+    <form action='{{ url }}' method='POST' id='{{ css_id|add:'-form' }}'>{% csrf_token %}
+        <input type='hidden' name='perform' value='true'/>
+        <button
+            id='{{ css_id|default:'id_confirm_action' }}'
+            class='btn {{ css_classes }}'
+            {% if confirm_action %}
+            type='button' data-toggle='confirmation' data-original-title='{{ confirm_message }}' data-placement='right'
+            {% endif %}
+            {% for key, val in data_attrs.iteritems %}{{ key }}='{{ val }}'{% endfor %}
+        >
+            <div><i class="{{ icon }}"></i> {{ tooltip_message }} </div>
+        </button>
+    </form>
+</li>

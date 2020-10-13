@@ -1,0 +1,32 @@
+/* extending main accordion styles *****************************************/
+
+.main-accordion.large-accordion {
+  padding: 0;
+  .main-accordion-content {
+    padding-left: 1.25rem;
+    @media (max-width: $screen-md) {
+      padding-left: 0rem;
+    }
+  }
+  .main-accordion-section {
+    &:before {
+      top: 10.6rem;
+      left: 0px;
+      bottom: 2rem;
+    }
+  }
+  .main-accordion-section-title {
+      font-size: 1.75rem;
+      line-height: 4rem;
+    &:after {
+      font-size: 1.75rem;
+      height: 4rem;
+      color: inherit;
+      margin-left: 15px;
+      position: static;
+      top: initial;
+      right: initial;
+    }
+  }
+}
+

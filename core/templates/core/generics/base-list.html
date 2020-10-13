@@ -1,0 +1,50 @@
+{% extends 'core/blank.html' %}
+
+{% load core_filters %}
+{% load icons %}
+{% load hosts %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-xs-12'>
+            <!-- BEGIN CHART PORTLET-->
+            <div class='portlet light borderless'>
+                <div class='portlet-title'>
+                    <div class='caption'>
+                        <i class='glyphicons {% block list-icon %}glyphicons-list{% endblock %} font-theme-color'></i>
+                        <span class='caption-subject bold uppercase font-theme-color'>{% block caption-subject %}Table{% endblock %}</span>
+                        <span class='caption-helper'>{% block caption-helper %}Sort & Filter{% endblock %}</span>
+                    </div>
+                    <div class='actions'>
+                        {% block list-actions-add %}
+                            {% with content_type=view.queryset.model|content_type %}
+                                {# Add Object Icon #}
+                                {% large_action_icon 'glyphicons-plus' tooltip_message='Add '|add:content_type.model|title %}
+                            {% endwith %}
+                        {% endblock %}
+                        {% with export_url='?'|add:request.GET.urlencode|add:'&export' %}
+                            {% block list-actions-export %}
+                                {# Export Icon #}
+                                {% large_action_icon 'glyphicons-disk-export' url=export_url tooltip_message='Export Data' %}
+                            {% endblock %}
+                        {% endwith %}
+                        {% if is_genepeeks_staff %}
+                            {% host_url 'export-finance' host 'clinical' as export_finance_url %}
+                            {% block list-actions-export-finance %}
+                                {# Export Finance Icon #}
+                                {% large_action_icon 'glyphicons-usd' url=export_finance_url tooltip_message='Export Finance Data' %}
+                            {% endblock %}
+                        {% endif %}
+                        {% block list-actions %}{% endblock %}
+                    </div>
+                </div>
+                <div class='portlet-body extended'>
+                    <div id='id-list-table' class='row'>
+                        {% block list-content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            <!-- END CHART PORTLET-->
+        </div>
+    </div>
+{% endblock %}

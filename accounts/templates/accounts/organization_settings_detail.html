@@ -1,0 +1,53 @@
+{% extends 'accounts/organization_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Settings' 'organization:settings:detail' pk=organization.pk %}
+{% endblock %}
+
+{% block profile-content-title %}Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_organization %}
+        {% host_url 'organization:settings:update' pk=organization.pk host 'accounts' as url %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Name</h4>
+        <p class='list-group-item-text'>
+            {{ organization.name }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Code</h4>
+        <p class='list-group-item-text'>
+            {{ organization.abbr }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Phone Number</h4>
+        <p class='list-group-item-text'>
+            {{ organization.phone_number|default:"N/A" }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Fax Number</h4>
+        <p class='list-group-item-text'>
+            {{ organization.fax_number|default:"N/A" }}
+        </p>
+    </div>
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Address</h4>
+        <p class='list-group-item-text'>
+            {% with organization.address as address %}
+                {% if address %}{% include 'distribution/address_snippet.html' %}{% else %}N/A{% endif %}
+            {% endwith %}
+        </p>
+    </div>
+{% endblock %}

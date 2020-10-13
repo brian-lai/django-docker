@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+<div class="modal-dialog">
+	<!-- Modal content-->
+	<div class="modal-content">
+		<div class="modal-header">
+	    	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    	<h4 class="modal-title">{% block modal-title %}{% endblock %}</h4>
+		</div>
+		<form method="POST" action="{% block action-url %}{% endblock %}" {% block form-attributes%}{% endblock %}>
+			{% csrf_token %}
+			<div class="modal-body">
+				{% block modal-body %}
+					{{ form|crispy }}
+				{% endblock %}
+	  		</div>
+			<div class="modal-footer">
+				<button type="submit" class=" btn btn-info theme-color" >{% block submit-button-text %}Upload{% endblock %}</button> 
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

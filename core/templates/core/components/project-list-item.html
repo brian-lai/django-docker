@@ -1,0 +1,37 @@
+<li class='mt-list-item'>
+    <div class='list-todo-icon bg-white font-{{ color }}'>
+        <i class='fa {% block item-icon %}{% endblock %}'></i>
+    </div>
+    <div class='list-todo-item {{ color|default:'grey' }}'>
+        <a class='list-toggle-container font-white {% if not expand %}collapsed{% endif %}' data-toggle='collapse' href='#task-{{ forloop.counter0 }}' aria-expanded='false'>
+            <div class='list-toggle done uppercase'>
+                <div class='list-toggle-title bold'>{% block item-name %}{% endblock %}</div>
+                <div class='badge badge-default pull-right bold'>{% block item-badge %}{% endblock %}</div>
+            </div>
+        </a>
+        <div class='task-list panel-collapse collapse {% if expand %}in{% endif %}' id='task-{{ forloop.counter0 }}'>
+            <ul>
+                {% block list-sub-items %}
+                    <li class='task-list-item {% block list-sub-item-class %}{% endblock %}'>
+                        <div class='task-status'>
+                            {% comment 'Providing default icons from Metronic' %}
+                                <a class='done' href='javascript:;'>
+                                    <i class='fa fa-check'></i>
+                                </a>
+                                <a class='pending' href='javascript:;'>
+                                    <i class='fa fa-close'></i>
+                                </a>
+                            {% endcomment %}
+                        </div>
+                        <div class='task-content'>
+                            <h4 class='uppercase bold'>
+                                <a href='{% block list-sub-item-url %}{% endblock %}'>{% block list-sub-item-name %}{% endblock %}</a>
+                            </h4>
+                            <p>{% block list-sub-item-description %}{% endblock %}</p>
+                        </div>
+                    </li>
+                {% endblock %}
+            </ul>
+        </div>
+    </div>
+</li>

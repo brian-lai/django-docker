@@ -37,6 +37,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+    'dal',
+    'dal_select2',
+    'djangobower',
+    'django_bootstrap_breadcrumbs',
+    'django_countries',
+    'django_filters',
+    'django_hats',
+    'django_hosts',
+    'django_tables2',
+    'guardian',
+    'hijack',
+    'mathfilters',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'storages',
+    'taggit',
+    'taggit_serializer',
+
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 ROOT_URLCONF = 'composeexample.urls'
 
@@ -59,13 +81,22 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                # Roles
+                'django_hats.context_processors.roles',
+                # Adds core template variables
+                'core.context_processors.settings',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'composeexample.wsgi.application'
 
@@ -122,3 +153,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Specifies a subdomain if none is present. Default to research browser URLs. This only applies locally.
+DEFAULT_HOST = 'www'
+
+# # Port we should expect the server to be running on. Used for URL resolving.
+# HOST_PORT = env('HOST_PORT')
+
+# # Prepend host HTTP_SCHEME
+# HOST_SCHEME = get_scheme(SECURE)
+
+# # Domain to use when resolving URLs.
+# PARENT_HOST = DOMAIN_NAME
+
+# Override Django's ROOT_URLCONF setting and provides subdomain itemization of URLs.
+ROOT_HOSTCONF = 'ari.hosts'
+
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'guardian.backends.ObjectPermissionBackend')

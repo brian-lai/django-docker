@@ -1,0 +1,49 @@
+.variant-selector {
+  display: block;
+  width: 100%;
+  color: inherit;
+  .variant-selector-btn-container {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    margin-left: -1.25rem;
+    @media (max-width: $screen-md) {
+      margin-left: 0rem;
+    }
+    .secondary-btn {
+      @media (max-width: $screen-md) {
+        display: block;
+        margin-left: 1.5rem
+      }
+    }
+
+  }
+  .variant-container {
+    display: none;
+    &.variant-open {
+      display: block;
+    }
+  }
+  .variant-list {
+    color: $grey;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+  }
+  .variant-list-item {
+    td {
+      border: 1px solid $grey-bg-lite;
+      width: 50%;
+      padding: 0.5rem 1rem;
+      vertical-align: text-top;
+      font-size: 1.125rem;
+      &:first-of-type {
+        font-weight: 400;
+        color: $default-text;
+      }
+    }
+  }
+}
+.variant-pdf-label {
+  display: none;
+}
+

@@ -1,0 +1,5 @@
+{% extends 'auth/roles/base.html' %}
+
+{% block role-icon %}glyphicons-none-color-swatch{% endblock %}
+{% block role-title %}{{ role.get_slug.title }}{% endblock %}
+{% block role-description %}No role description provided{% endblock %}

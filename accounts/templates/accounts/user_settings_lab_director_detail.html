@@ -1,0 +1,29 @@
+{% extends 'accounts/user_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+{% load primitive_types %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Lab Director' 'user:lab-director:detail' pk=user.pk division='lab-director' %}
+{% endblock %}
+
+{% block profile-content-title %}Lab Director Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_medical_officer %}
+        {% host_url 'user:lab-director:update' pk=user.pk role='lab-director' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Lab Director' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Degree(s)</h4>
+        <p class='list-group-item-text'>
+            {{ user.profile.labdirector.degrees|default:'N/A' }}
+        </p>
+    </div>
+{% endblock %}

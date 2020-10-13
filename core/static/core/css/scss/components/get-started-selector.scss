@@ -1,0 +1,96 @@
+.get-started-wrapper {
+  min-height: 21.875rem;
+  @media (max-width: $screen-md) {
+    min-height: 15rem;
+  }
+  .get-started-selector {
+    background: $grey-bg-lite;
+    height: 1px;
+    width: 80%;
+    margin: 6.5rem 10% 0 10%;
+    position: relative;
+  }
+  .get-started-select-toggle {
+    display: inline-block;
+    width: 44%;
+    padding-top: 7.5rem;
+    position: absolute;
+    top: -2.4375rem;
+    text-align: center;
+    color: $grey;
+    font-size: 2rem;
+    font-weight: 300;
+    transition: $hover;
+    cursor: pointer;
+    @media (max-width: $screen-lg) {
+      font-size: 1.5rem;
+    }
+    &:hover {
+      color: $blueberry-lite;
+      .get-started-select-diamond {
+        border: 1px solid $blueberry-lite;
+      }
+    }
+    &.select-active {
+      color: $blueberry-lite;
+      .get-started-select-diamond {
+        border: 1px solid $blueberry-lite;
+      }
+    }
+  }
+  #get-started-select-1 {
+    left: -15%;
+    .get-started-select-diamond {
+      &:after {
+        content: '1';
+      }
+    }
+  }
+  #get-started-select-2 {
+    left: calc(50% - 24%);
+    .get-started-select-diamond {
+      &:after {
+        content: '2';
+      }
+    }
+  }
+  #get-started-select-3 {
+    right: -15%;
+    .get-started-select-diamond {
+      &:after {
+        content: '3';
+      }
+    }
+  }
+  .get-started-select-diamond {
+    color: inherit;
+    border: 1px solid $grey-bg-lite;
+    display: inline-block;
+    width: 4.875rem;
+    height: 4.875rem;
+    background: $white;
+    position: absolute;
+    top: 0;
+    right: calc(50% - 2.4375rem);
+    transform: rotate(45deg);
+    transition: $hover;
+    &:after {
+      display: inline-block;
+      color: inherit;
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 1rem;
+      right: 1.9rem;
+      @media (max-width: $screen-lg) {
+        top: 1.25rem;
+      }
+    }
+  }
+}
+
+.get-started-content {
+  display: none;
+  &.active-content {
+    display: block;
+  }
+}

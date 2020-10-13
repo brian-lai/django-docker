@@ -1,0 +1,45 @@
+i[data-toggle=popover] {
+  font-style: normal;
+}
+
+[data-toggle=popover] {
+  cursor: pointer;
+  .radio label &,
+  .checkbox label & {
+
+  }
+  &:after {
+    content: "\f05a";
+    font-family: Fontawesome, sans-serif;
+    font-size: 12px;
+    color: $blue;
+    display: inline;
+    vertical-align: text-top;
+  }
+}
+
+.popover {
+  border: 1px solid $grey-lite;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba($grey-lite, .2);
+  min-width: 200px;
+  padding: 0;
+  > .arrow {
+    display: none;
+  }
+  &.top{
+    > .arrow {
+      margin-left: -25px;
+    }
+  }
+}
+
+.popover-title {
+  border-radius: 10px 10px 0 0;
+    background-color: $grey-bg;
+    border-bottom: 1px solid $grey-bg;
+}
+
+.popover-content {
+  color: $grey;
+}

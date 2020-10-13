@@ -1,0 +1,35 @@
+{% extends 'accounts/user_settings_medical_officer_detail.html' %}
+
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+
+{% block js-imports %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Update' 'user:lab-director:update' pk=user.pk division='lab-director' %}
+{% endblock %}
+
+{% block profile-content-title %}Lab Director Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_medical_officer %}
+        {% host_url 'user:lab-director:update' pk=user.pk role='lab-director' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Lab Director' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <input id='id_user_id' name='user_id' type='hidden' value='{{ user.id }}' />
+    <form action="{% host_url 'user:lab-director:update' role='lab-director' pk=user.pk host 'accounts' %}" method='POST'>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type='submit' class='btn blue' name='Submit' value='Submit'>Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'core/generics/base-list.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+
+{% block accounts-app-navigation %}active{% endblock %}
+{% block accounts-app-navigation-arrow %}open{% endblock %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Accounts' 'root' %}
+    {% breadcrumb 'Users' 'user:list' %}
+{% endblock %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <style>
+        #id-list-table {
+            min-width: 1000px;
+        }
+    </style>
+{% endblock %}
+
+{% block html-title %}Users{% endblock %}
+
+{% block page-title %}User List{% endblock %}
+
+{% block list-actions-add %}
+    {% if roles.gene_peeks_staff %}
+        {% host_url 'user:create' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-plus' tooltip_message='Add User' %}
+    {% endif %}
+{% endblock %}
+
+{% block list-content %}
+    {% with request.get_full_path as list_url %}
+        <div id='id-list-table' class='row'>
+            <div id="table" class="col-xs-10">
+                {% include 'genepeeks/components/table.html' %}
+            </div>
+            <div class="col-xs-2">
+                {% include 'genepeeks/components/filter.html' %}
+            </div>
+        </div>
+    {% endwith %}
+{% endblock %}

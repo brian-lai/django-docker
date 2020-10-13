@@ -1,0 +1,47 @@
+{% extends 'core/blank.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load staticfiles %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Not Found' '' %}
+{% endblock %}
+
+{% block html-title %}Page Not Found{% endblock %}
+
+{% block page-title %}Page Not Found{% endblock %}
+
+{% block page-subtitle %}Not Found 404{% endblock %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <link href='{% static 'core/css/error.min.css' %}' rel='stylesheet' type='text/css' />
+{% endblock %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-md-12 page-404'>
+            <div class='number font-green'> 404 </div>
+            <div class='details'>
+                <h3>Oops! You're lost.</h3>
+                <p> We can not find the page you're looking for.
+                    <br/>
+                    <a href='{% host_url 'root' host 'dashboard' %}'> Return home </a> or try the search bar.
+                </p>
+                <!--
+                <form action='#'>
+                    <div class='input-group input-medium'>
+                        <input type='text' class='form-control' placeholder='keyword...'>
+                        <span class='input-group-btn'>
+                            <button type='submit' class='btn green'>
+                                <i class='fa fa-search'></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

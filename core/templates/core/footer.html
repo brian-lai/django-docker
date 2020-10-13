@@ -1,0 +1,37 @@
+{% load hosts %}
+{% load staticfiles %}
+
+<style>
+    #careers{
+        color: #ee6e62;
+    }
+</style>
+<footer>
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-md-3" id="footer-logo">
+                <a href="index.html"><img src="{% static 'core/img/genepeeks-logo.svg' %}" alt=""></a>
+            </div>
+            <div class="col-md-9" id="footer-links">
+                <nav id="footer-nav">
+                    <a id="careers" href="{% host_url 'careers' host 'www' %}">Careers</a>
+                    <a href="{% host_url 'privacy' host 'www' %}">Privacy Policy</a>
+                    <a href="{% host_url 'terms_and_conditions' host 'www' %}">Terms of Use</a>
+                </nav>
+                <nav id="footer-social">
+                    <a href="https://twitter.com/GenePeeks"><i class="fa fa-twitter"></i></a>
+                    <a href="http://www.linkedin.com/company/1571211?trk=prof-0-ovw-curr_pos"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:info@genepeeks.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/GenePeeks"><i class="fa fa-facebook"></i></a>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="footer-copyright">
+                <p>
+                    Copyright &copy; {% now "Y" %} GenePeeks, Inc. All rights reserved. This service was developed and its performance characteristics determined by GenePeeks, Inc. It has not been cleared or approved by the U.S. Food and Drug Administration (FDA). As a laboratory-developed test, all specimens are processed in our designated laboratory certified under the Clinical Laboratory Improvement Amendments (CLIA) which ensures quality and analytic validity.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

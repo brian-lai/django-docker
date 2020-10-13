@@ -1,0 +1,77 @@
+.contact-info {
+  display: block;
+  list-style: none;
+  padding-left: 4.25rem;
+  position: relative;
+  color: $default-text;
+  &:before,
+  &:after {
+    display: inline-block;
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-71.svg');
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    top: -1.25rem;
+    left: -1.25rem;
+  }
+  &:after {
+    content: url(../svg/print-icons/mail-black.svg);
+    display: none;
+  }
+  li {
+    line-height: 1.25rem;
+    &:last-child a {
+      color: inherit;
+      @media (max-width: $screen-xs) {
+        color: $blue;
+      }
+    }
+    @media (max-width: $screen-sm) {
+      line-height: 1.5rem;
+    }
+  }
+  span {
+    color: inherit;
+    font-size: 0.875rem;
+    @media (max-width: $screen-sm) {
+      font-size: 1.125rem;
+    }
+  }
+  a {
+    font-size: 0.875rem;
+    @media (max-width: $screen-sm) {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+.contact-info.color-blueberry-lite {
+  &:before {
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-72.svg');
+  }
+}
+.contact-info.color-apple {
+  &:before {
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-73.svg');
+  }
+}
+.contact-info.color-grape {
+   &:before {
+     content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-74.svg');
+   }
+ }
+.contact-info.color-watermelon {
+  &:before {
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-75.svg');
+  }
+}
+.contact-info.color-tangerine {
+  &:before {
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-76.svg');
+  }
+}
+.contact-info.color-lemon {
+  &:before {
+    content: url('../svg/svg-icons-set-2/mail/GenePeeks_Iconography_secondary-77.svg');
+  }
+}

@@ -1,0 +1,55 @@
+{% extends 'core/modals/base-modal.html' %}
+
+{% block modal-title %}{# {{ object_list.0.content_type|title }} {{ object_list.0.get_edited_object }} #}Audit Report{% endblock %}
+
+{% block modal-body %}
+    <div class='timeline'>
+        {% for entry in object_list %}
+            <!-- TIMELINE ITEM -->
+            <div class='timeline-item'>
+                <div class='timeline-badge'>
+                    <div class='timeline-icon'>
+                        <i class='glyphicons {% if entry.is_addition %}glyphicons-plus font-green-jungle{% elif entry.is_change %}glyphicons-pencil font-blue-sharp{% elif entry.is_deletion %}glyphicons-bin font-red-intense{% endif %} '></i>
+                    </div>
+                </div>
+                <div class='timeline-body'>
+                    <div class='timeline-body-arrow'></div>
+                    <div class='timeline-body-head'>
+                        <div class='timeline-body-head-caption'>
+                            <a href='{{ entry.user.get_absolute_url }}' class='timeline-body-title font-blue-madison'>{{ entry.user.get_full_name }}</a>
+                            <span class='timeline-body-time font-grey-cascade'>{{ entry.action_time|date:'r' }}</span>
+                        </div>
+                        {% comment %}
+                        <div class='timeline-body-head-actions'>
+                            <div class='btn-group'>
+                                <button class='btn btn-circle green btn-sm dropdown-toggle' type='button' data-toggle='dropdown' data-hover='dropdown' data-close-others='true'> Actions
+                                    <i class='fa fa-angle-down'></i>
+                                </button>
+                                <ul class='dropdown-menu pull-right' role='menu'>
+                                    <li>
+                                        <a href='javascript:;'>Action </a>
+                                    </li>
+                                    <li>
+                                        <a href='javascript:;'>Another action </a>
+                                    </li>
+                                    <li>
+                                        <a href='javascript:;'>Something else here </a>
+                                    </li>
+                                    <li class='divider'> </li>
+                                    <li>
+                                        <a href='javascript:;'>Separated link </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endcomment %}
+                    </div>
+                    <div class='timeline-body-content'>
+                        <span class='font-grey-cascade'>{{ entry }}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- END TIMELINE ITEM -->
+        {% endfor %}
+    </div>
+{% endblock %}

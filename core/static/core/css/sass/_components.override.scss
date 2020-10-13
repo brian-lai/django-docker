@@ -1,0 +1,386 @@
+// PORTLET
+.portlet {
+    &.child {
+        padding-bottom: 0;
+
+        .portlet-title {
+            border: 0 !important;
+            margin-bottom: 0;
+        }
+
+        .portlet-body {
+            padding-top: 0;
+
+            .row {
+                margin-right: -20px;
+                margin-left: -20px;
+
+                table {
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+
+    &.borderless:not(.portlet-fullscreen) {
+        padding: 0;
+    }
+
+    &.portlet-fullscreen .actions > .icon-btn:last-child {
+        background-color: #3FABA4;
+
+        &, div {
+            color: #FFFFFF !important;
+        }
+    }
+
+    & > .portlet-body.extended {
+        overflow-x: auto;
+
+        .row {
+            margin: 0;
+        }
+    }
+    
+    & > .portlet-title {
+        .caption {
+            i.glyphicons {
+                margin: 1px 6px;
+
+                &:before {
+                    padding: 0;
+                }
+            }
+            .caption-desc {
+                margin-left: 6px;
+            }
+        }
+
+        // Left aligned tabs take place of caption in portlets
+        & > ul.nav.nav-tabs.nav-tabs-left {
+            float: left;
+
+            & > li > a {
+                font-size: 14px;
+            }
+        }
+
+        & > .actions {
+            padding: 0 !important;
+
+            .icon-btn {
+                background-color: inherit;
+                border-color: #FFFFFF;
+                border-radius: 3px !important;
+                height: 50px;
+                margin-top: -5px;
+                padding: 0;
+
+                &:hover {
+                    border-color: #AAAAAA;
+                }
+
+                div {
+                    margin-top: 0;
+                    color: inherit;
+                    padding: 0 2px;
+                }
+            }
+
+            form {
+                display: inline-block;
+
+                & > .tooltip {
+                    margin-left: -1px;
+                }
+            }
+
+            span {
+                & + .tooltip {
+                    margin-top: -7px;
+                    margin-left: -2px; 
+                }
+
+                & > a.btn.btn-icon-only.btn-default.btn-circle {
+                    line-height: 1.5;
+                }
+            }
+
+            span + .tooltip {
+                margin-top: -7px;
+            }
+
+            button.btn-icon-only.btn-default, .btn-icon-only.btn-default {
+                &.btn.btn-circle {
+                    height: 30px;
+                    width: 30px;
+
+                    &.fullscreen {
+                        padding-top: 5px;
+                    }
+
+                    &.glyphicons, & > i.glyphicons {
+                        font-size: 12px;
+
+                        &:before {
+                            padding: 0;
+                        }
+                    }
+                }
+
+                button {
+                    background-color: #FFFFFF;
+                    padding: 0;
+                }
+            }
+        }
+
+        // Using glyphicons chevron to replace portlet-<action>-icon.png
+        & > .tools > a {
+            // Reset image for glyphicon
+            &.collapse { background-image: none; }
+            &.glyphicons {
+                color: #ACACAC;
+                position: relative;
+                top: -5px;
+                width: 22px;
+
+                &.collapse:before {
+                    content: '\E602';
+                }
+                &.expand:before {
+                    content: '\E601';
+                }
+            }
+        }
+    }
+}
+
+// XS PORTLET
+@media (max-width: 767px) {
+    .portlet .portlet-title {
+        &.tabbable-line {
+            ul.nav.nav-tabs.nav-tabs-left li {
+                float: none;
+                display: block;
+            }
+            .actions {
+                text-align: left;
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+        .actions .icon-btn {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+// DROPDOWN BUTTONS
+.btn-group {
+    &, & > .dropdown-menu {
+        & a > span.glyphicons::before {
+            padding: 3px 10px 3px 2px;
+        }
+        button {
+            background-color: #FFFFFF;
+            color: #6F6F6F;
+            font-weight: 300;
+            padding-left: 8px;
+            text-align: left;
+            width: 100%;
+
+            &:hover {
+                background-color: #F5F5F5;
+            }
+
+            &.dropdown-toggle {
+                width: auto;
+            }
+        }
+    }
+}
+
+// CHECKBOXES
+.checkbox label {
+    // This is the Bootstrap default which Metronic overrides, watch out for repercussions...
+    padding-left: 20px;
+}
+
+// BUTTONS
+a.btn, button {
+    & > span.glyphicons {
+        margin-top: -3px;
+        margin-left: -8px;
+    }
+}
+
+// PORTLET ACTIONS
+.btn-icon-only > [class^=icon-], .btn-icon-only.glyphicons {
+    &.glyphicons-iphone-transfer {
+        margin-top: 3px;
+    }
+
+    &.glyphicons-group:before {
+        margin-top: 0px;
+    }
+}
+
+.btn.icon-btn {
+    text-decoration: none !important;
+
+    i {
+        font-size: 18px !important;
+    }
+}
+
+// LIST GROUP
+.list-group .list-group-item {
+    .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .list-group-item-heading {
+        font-weight: 600;
+        font-size: 16px;
+    }
+    .list-group-item-text {
+        .glyphicons:before {
+            font-size: 18px;
+            padding: 0;
+        }
+    }
+}
+
+// TABS
+.nav-tabs > li > a > .badge {
+    margin: 0 5px -1px;
+}
+
+// STEPS
+.mt-element-step .step-line .mt-step-number {
+    padding: 9px 0;
+
+    & > i.glyphicons {
+        top: 0;
+        transform: none;
+    }
+}
+
+// LISTS
+.mt-element-list .list-todo.mt-list-container ul>.mt-list-item>.list-todo-item .task-list {
+    border-bottom: 1px solid #E7ECF1;
+
+    .task-list-item>.task-content {
+        padding-left: 10px;
+
+        .actions {
+            button { width: auto; }
+
+            ul.dropdown-menu {
+                position: absolute;
+
+                button {
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}
+
+// TIMELINE
+.timeline .timeline-icon {
+    padding-top: 15px !important;
+    padding-left: 15px !important;
+    position: relative;
+    z-index: 10000;
+}
+
+.mt-timeline-2 {
+    $left-offset: 35px;
+
+    & > .mt-timeline-line {
+        left: $left-offset;
+    }
+    & > .mt-container > .mt-item {
+        margin-left: 100px !important;
+        text-align: left !important;
+
+        &:nth-child(even) {
+            & > .mt-timeline-icon > i {
+                transform: translateY(-50%) translateX(-50%);
+                left: 50%;
+            }
+
+            & > .mt-timeline-content > .mt-content-container {
+                .mt-author, .mt-avatar {
+                    float: right;
+                }
+
+                .mt-avatar {
+                    margin-left: 15px;
+                    margin-right: 0;
+                }
+
+                .mt-title {
+                    float: left;
+                    text-align: left;
+                }
+            }
+        }
+
+        & > .mt-timeline-icon {
+            left: $left-offset;
+        }
+
+        & > .mt-timeline-content {
+            width: 90%;
+
+            & > .mt-content-container {
+                margin: 0 !important;
+                padding: 15px;
+
+                &:before {
+                    border-left: 0 !important;
+                    border-right: 10px solid #D3D7E9;
+                    left: -10px !important;
+                }
+
+                .mt-author-name, .mt-author-notes {
+                    text-align: right !important;
+                }
+            }
+        }
+    }
+}
+
+// TABLES
+table {
+    td, th {
+        &.progress {
+            background-color: rgba(0, 0, 0, 0.0);
+        }
+    }
+}
+
+// DASHBOARD STATS
+$lightGreyFont: #AAB5BC;
+.dashboard-stat2.bordered {
+    .icon > .glyphicons {
+        color: $lightGreyFont;
+        font-size: 24px; 
+        margin-top: -2px;
+
+        &::before {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+#hijacked-warning {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

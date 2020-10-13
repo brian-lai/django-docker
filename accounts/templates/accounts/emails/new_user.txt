@@ -1,0 +1,11 @@
+{% extends 'core/emails/base.txt' %}
+
+{% block content %}
+    Hi {{ name }},
+
+    Thank you for joining GenePeeks.
+
+    Please don't hesitate to contact us with questions. We are always happy to help.
+{% endblock %}
+
+{% block disclaimer %}{% endblock %}

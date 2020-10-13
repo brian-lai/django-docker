@@ -1,0 +1,39 @@
+{% extends 'core/blank.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load staticfiles %}
+
+{% block breadcrumb-tags %}
+    {% breadcrumb 'Permission Denied' '' %}
+{% endblock %}
+
+{% block html-title %}Permission Denied{% endblock %}
+
+{% block page-title %}Permission Denied{% endblock %}
+
+{% block page-subtitle %}Permission Denied 403{% endblock %}
+
+{% block css-imports %}
+    {{ block.super }}
+    <link href='{% static 'core/css/error.min.css' %}' rel='stylesheet' type='text/css' />
+{% endblock %}
+
+{% block page-content %}
+    <div class='row'>
+        <div class='col-md-12 page-500'>
+            <div class='number font-yellow-crusta'>403</div>
+            <div class='details'>
+                <h3>Sorry, you don't have the right permissions.</h3>
+                <p>
+                    Please try logging in or contact our support if this doesn't seem right!
+                    <br/>
+                </p>
+                <p>
+                    <a href='{% host_url 'login' host 'accounts' %}' class='btn yellow-crusta btn-outline'>Login Here</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

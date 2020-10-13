@@ -1,0 +1,38 @@
+dt {
+    margin-right: 15px;
+}
+
+@media (min-width: 768px) {
+    .dl-horizontal dd {
+        margin-left: 220px;
+    }
+    .dl-horizontal dt {
+        width: 200px;
+    }
+}
+
+.btn-danger {
+    color: #FFFFFF;
+    background-color: #ED6B75;
+    border-color: #EA5460;
+
+    &:hover {
+        background-color: #E73d4A;
+        border-color: #E31D2D;
+    }
+}
+
+.btn-success {
+    color: #FFFFFF;
+    background-color: #36C6D3;
+    border-color: #2BB8C4;
+
+    &:hover {
+        background-color: #27A4B0;
+        border-color: #208992;
+    }
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    z-index: 10000;
+}

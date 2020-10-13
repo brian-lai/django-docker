@@ -1,0 +1,123 @@
+$sm-radius: 3px;
+$lg-radius: 15px;
+$status: $blue;
+
+@include keyframes( statusActive )
+{
+  0% { left: 100%; background: #fff; }
+  100% { left: 48%; background: $status; }
+}
+
+.user-flow-nav {
+  margin-top: 50px;
+  .list-group {
+    border: 1px solid $grey-lite;
+    border-top: 7px solid $tangerine;
+    border-bottom-left-radius: $sm-radius;
+    border-bottom-right-radius: $sm-radius;
+    text-align: right;
+    display: inline-block;
+    padding: 12px 0 18px;
+    z-index: 15;
+    background: #fff;
+    position: absolute;
+    top: -155px;
+    @media (max-width: $screen-lg) {
+      margin-left: -15px;
+    }
+    @media (max-width: $screen-md) {
+      display: none;
+    }
+  }
+  &.scroll {
+    .list-group {
+      position: fixed;
+      top: 145px;
+    }
+  }
+  .list-group-item, .list-group-title {
+    border: 0;
+    margin-top: 0;
+    padding: 4px 24px;
+    font-size: 1.3125rem;
+    position: relative;
+    text-align: right;
+    &:focus {
+      outline:  none;
+      color: $grey-bg-lite;
+    }
+  }
+  .list-group-item {
+    color: $grey-lite;
+    @media (max-width: $screen-lg) {
+      font-size: 1rem;
+      .list-group-title {
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .status {
+      width: 13px;
+      height: 13px;
+      display: inline-block;
+      position: absolute;
+      background: #fff;
+      border-radius: 100%;
+      border: 1px solid $status;
+      top: 12px;
+      right: -7px;
+      overflow: hidden;
+      .inner {
+        background: transparent;
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 100%;
+        transition: all 0.3s ease;
+      }
+    }
+    &:hover, &:focus, &.active {
+      background-color: inherit;
+      color: $grey;
+    }
+    &.active {
+      color: $tangerine;
+      .status {
+        .inner {
+          background: $status;
+          animation: statusActive 0.4s forwards linear;
+          animation-delay: 0.4s;
+        }
+      }
+    }
+    &.complete {
+      $status: $apple;
+      .status {
+        border: 1px solid $status;
+        background: $status;
+        .inner {
+          background: $status;
+          left: 0;
+        }
+      }
+      &:hover, &:focus {
+        color: $default-text;
+        cursor: pointer;
+      }
+    }
+    &:last-child {
+      border-bottom-left-radius: $lg-radius;
+      border-bottom-right-radius: $lg-radius;
+    }
+  }
+  .list-group-title {
+    &, &:hover {
+      font-weight: 500;
+      color: $blue;
+      font-size: 1.375rem;
+      cursor: default;
+      margin-bottom: 0;
+    }
+  }
+}

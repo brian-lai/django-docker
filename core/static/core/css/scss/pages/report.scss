@@ -1,0 +1,263 @@
+.content-section {
+  .list-group {
+    top: -50px;
+    margin-left: -15px;
+  }
+  &:last-of-type {
+    .report-container {
+      &:before {
+        height: auto;
+        bottom: 150px;
+      }
+    }
+  }
+  .user-flow-nav {
+    .report-nav {
+      a {
+        &:hover {
+          color: $default-text;
+        }
+        &.active {
+          color: $default-text;
+          .status {
+            .inner {
+              background: $status;
+              animation: fullActiveItem 0.4s forwards linear;
+              animation-delay: 0.4s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes fullActiveItem
+{
+  0% { left: 100%; background: #fff; }
+  100% { left: 0%; background: $status; }
+}
+.download-container {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+  @media (max-width: $screen-md){
+    display: block;
+  }
+  .download-links {
+    max-width: 150px;
+    float: right;
+    padding: 4px 0;
+    a {
+      border: 1px solid $grey;
+      background: $grey;
+      font-size: 1.25rem;
+      &:hover, &:focus, &:active, &:focus:active {
+        background: darken($grey, 8%);
+        color: #fff!important;
+      }
+    }
+  }
+}
+.download-links {
+  display: block;
+  width: 100%;
+  padding: 4px 10px;
+  margin-top: 0.5rem;
+  button {
+    display: inline-block;
+    border: 1px solid $grey-lite;
+    border-radius: 0.875rem;
+    padding: 0.25rem 1rem;
+    width: 100%;
+    color: #fff;
+    background: $grey-lite;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: border-radius 0.4s linear 0s, background 0.2s linear 0s, border 0.2s linear 0s;
+    &:hover, &:focus, &:active, &:focus:active {
+      background: darken($grey-lite, 8%);
+      color: #fff!important;
+      border: 1px solid darken($grey-lite, 8%);
+    }
+  }
+}
+.report-container {
+  padding-left: 5rem;
+  position: relative;
+  @media (max-width: $screen-sm) {
+    padding-left: 15px;
+  }
+  &:before {
+    background: $grey-bg-lite;
+    display: inline-block;
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    @media (max-width: $screen-md) {
+      display: none;
+    }
+  }
+  h3 {
+    font-weight: 300;
+  }
+  .subtitle {
+    color: $default-text;
+    font-weight: 300;
+  }
+  .lead {
+    color: lighten($default-text, 15%);
+  }
+  .report-content {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+  }
+  .main-btn {
+    margin-bottom: 2.5rem;
+  }
+  .thank-you-previde {
+    background: $white;
+    border: 1px solid $grey-bg-lite;
+    border-radius: 1.25rem;
+    width: 110%;
+    padding: 2rem;
+    position: relative;
+    left: -5rem;
+    margin-top: 1rem;
+    @media (max-width: $screen-sm) {
+      position: static;
+      left: initial;
+      width: 100%;
+    }
+  }
+  .main-btn.pdf-download {
+    margin-top: 2rem;
+    margin-bottom: -3rem;
+    float: right;
+  }
+}
+
+.print-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: #fff;
+  border: 4px;
+  padding: 45px 30px;
+}
+
+
+.gene-list-container {
+  margin-bottom: 1rem;
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+  .gene-list {
+    list-style: none;
+    width: 80%;
+    float: left;
+    margin: 0;
+    padding: 1rem 0;
+    @media (max-width: $screen-sm) {
+      width: 100%;
+      float: none;
+    }
+    .disease-label {
+      display: inline-block;
+      margin: 0 0 5px;
+    }
+    .disease-data {
+      color: $default-text;
+      display: inline-block;
+    }
+  }
+}
+
+
+
+
+#risk-detected-img,
+#no-risk-detected-img {
+  max-width: 95%;
+}
+
+@media (min-width: $screen-lg) {
+    #risk-detected-img,
+    #no-risk-detected-img {
+      margin-top: -95px;
+    }
+}
+
+
+.report-icon-action-grape,
+.report-icon-review-tangerine,
+.report-icon-risk-apple,
+.report-icon-dna-blueberry-lite,
+.report-icon-review-apple
+{
+  position: relative;
+  &:before {
+    display: inline-block;
+    width: 6.25rem;
+    height: 6.25rem;
+    position: absolute;
+    left: -8.1rem;
+    top: -2.25rem;
+    @media (max-width: $screen-md) {
+      width: 4.25rem;
+      height: 4.25rem;
+      top: -1rem;
+      left: -5rem;
+    }
+    @media (max-width: $screen-sm) {
+      display: none;
+    }
+  }
+}
+
+.report-icon-review-tangerine {
+  &:before {
+    content: url(../svg/svg-icons/review-icons/GenePeeks_Iconography_primary-69.svg);
+  }
+}
+.report-icon-review-apple {
+  &:before {
+    content: url(../svg/svg-icons/review-icons/GenePeeks_Iconography_primary-66.svg);
+  }
+}
+.report-icon-action-grape {
+  &:before {
+    content: url(../svg/svg-icons/actions-icons/GenePeeks_Iconography_primary-53.svg);
+  }
+}
+
+.report-icon-risk-apple {
+  &:before {
+    content: url(../svg/svg-icons/risks-icons/GenePeeks_Iconography_primary-73.svg);
+  }
+}
+.report-icon-dna-blueberry-lite {
+  &:before {
+    content: url(../svg/svg-icons/dna-icons/GenePeeks_Iconography_primary-44.svg);
+  }
+}
+
+.pdf-client-info {
+  display: none;
+}
+

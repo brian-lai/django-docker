@@ -1,0 +1,132 @@
+.main-accordion {
+  display: block;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0 0 0 1.25rem;
+  width: 100%;
+  @media (max-width: $screen-md) {
+    padding: 0;
+  }
+  .main-accordion-section {
+    border-bottom: 1px solid $grey-bg-lite;
+    color: inherit;
+    position: relative;
+    &:before {
+      display: inline-block;
+      content: '';
+      width: 3px;
+      position: absolute;
+      top: 0.75rem;
+      left: -20px;
+      bottom: 1rem;
+      opacity: 0;
+      transition: 0.4s linear 0s;
+      @media (max-width: $screen-md) {
+        display: none;
+      }
+    }
+  }
+  .main-accordion-section-title {
+    display: block;
+    line-height: 2.75rem;
+    color: inherit;
+    padding: 0 3rem 0 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    &:after {
+      display: inline-block;
+      content: '\f107';
+      font-family: Fontawesome;
+      font-size: 1.75rem;
+      height: 2.75rem;
+      color: inherit;
+      position: absolute;
+      top: 0;
+      right: 0.5rem;
+      transition: 0.4s linear;
+    }
+  }
+  .main-accordion-content {
+    display: none;
+  }
+  .main-accordion-content-split {
+    &:after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+    div {
+      width: 50%;
+      padding: 0 1.5rem 0 0;
+      float: left;
+      @media (max-width: $screen-xs) {
+        width: 100%;
+      }
+    }
+    h3 {
+      margin: 0 0 5px;
+      font-weight: 400;
+    }
+    p {
+      margin-top: 0;
+    }
+  }
+  .main-accordion-section.section-open {
+    &:before {
+        opacity: 1;
+        transition: 0.4s linear 0.4s;
+    }
+    h3 {
+      &:after {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+/* accordion colors ******************************************************/
+
+.main-accordion.color-grape {
+  .main-accordion-section {
+    &:before {
+     background: $grape;
+    }
+  }
+}
+.main-accordion.color-blueberry-lite {
+  .main-accordion-section {
+    &:before {
+      background: $blueberry-lite ;
+    }
+  }
+}
+.main-accordion.color-apple {
+  .main-accordion-section {
+    &:before {
+      background: $apple;
+    }
+  }
+}
+.main-accordion.color-watermelon {
+  .main-accordion-section {
+    &:before {
+      background: $watermelon ;
+    }
+  }
+}
+.main-accordion.color-tangerine {
+  .main-accordion-section {
+    &:before {
+      background: $tangerine;
+    }
+  }
+}
+.main-accordion.color-lemon {
+  .main-accordion-section {
+    &:before {
+      background: $lemon;
+    }
+  }
+}
+

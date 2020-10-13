@@ -1,0 +1,113 @@
+{% load hosts %}
+{% load staticfiles %}
+
+<header class="header">
+    <div class="health-professionals-info">
+        <div class="container">
+            <ul class="row">
+                <li>
+                    <a href="mailto:support@genepeeks.com">support@genepeeks.com</a>
+                </li>
+                <li>
+                    <a href="{% host_url 'resources:healthcare-providers' host 'www' %}">for healthcare professionals</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container header-wrap">
+        <div class="row header-row">
+            <a href="{% host_url 'index' host 'www' %}" class="header-logo">
+                <img src="{% static 'core/img/genepeeks-logo.svg' %}">
+            </a>
+            <img class="header-logo print-icon" src="{% static 'core/img/genepeeks-logo.svg' %}">
+            <nav class="main-menu">
+                <a href="{% host_url 'index' host 'www' %}" class="mobile-logo">
+                    <img src="{% static 'core/img/genepeeks-logo.svg' %}">
+                </a>
+                <span class="mobile-menu-toggle-2"></span>
+                <ul class="main-menu-list">
+                    <li class="main-menu-list-item" >
+                        <span class="menu-toggle">About<i class="sub-icon"></i></span>
+                        <div class="submenu-wrap">
+                            <ul class="submenu">
+                                <li>
+                                    <a href="{% host_url 'about:mission' host 'www' %}">Mission</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'about:team' host 'www' %}">Leadership</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'about:advisory-boards' host 'www' %}">Advisory Boards</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'science:gene-list' host 'www' %}">Genes and Diseases</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'resources:healthcare-providers' host 'www' %}">Information for Healthcare Providers</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'about:press' host 'www' %}">Press</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'resources:faq' host 'www' %}">FAQs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main-menu-list-item" >
+                        <span class="menu-toggle" >Platform<i class="sub-icon"></i></span>
+                        <div class="submenu-wrap">
+                            <ul class="submenu">
+                                <li>
+                                    <a href="{% host_url 'science:index' host 'www' %}">Platform Overview</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'science:index' host 'www' %}#vgd">Variant Scoring</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'science:index' host 'www' %}#genome">Genome-based analytics</a>
+                                </li>
+                                <li>
+                                    <a href="{% host_url 'science:index' host 'www' %}#research-browser">Research browser</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="customer-nav {% if request.user.is_authenticated == False %}logged-out{% endif %}">
+                    <li class="customer-title">
+                        <span class="customer-name">{{ request.user.first_name|default:'User' }}</span>
+                        <a href='{% host_url 'login' host 'accounts' %}' class="customer-login">login</a>
+                        <i class="customer-sub-icon"></i>
+                        {% if request.user.is_authenticated %}
+	                        <ul class='customer-menu'>
+	                            <li>
+	                                <a href="{% host_url 'my-genepeeks' host 'my' %}">my genepeeks</a>
+	                            </li>
+                                {% if perms.accounts.gist_dashboard %}
+                                    <li>
+                                        <a href="{% host_url 'login_redirect' host 'accounts' %}">clinic portal</a>
+                                    </li>
+                                {% endif %}
+	                            <li>
+	                                <a href="{% host_url 'logout' host 'accounts' %}">logout</a>
+	                            </li>
+	                        </ul>
+	                    {% endif %}
+                    </li>
+                </ul>
+                <ul class="health-professionals-info-mobile">
+                    <li>
+                        <a href="mailto:info@genepeeks.com">info@genepeeks.com</a>
+                    </li>
+                    <li>
+                        <a href="#">for healthcare professionals</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>

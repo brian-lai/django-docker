@@ -1,0 +1,8 @@
+{% extends 'core/emails/base.txt' %}
+
+{% block content %}
+    You have been invited to join {{ organization }} @ {{ admin_group }}!
+    Here is the link to your invite: {{ invite_url }}
+{% endblock %}
+
+{% block footer %}{% endblock %}

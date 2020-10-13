@@ -1,0 +1,13 @@
+{% extends 'core/modals/base-modal.html' %}
+
+{% load staticfiles %}
+
+{% block modal-no-title %}{% endblock %}
+
+{% block modal-body %}
+    <div class='text-center'>
+        <img src='{% static 'common/img/loading.gif' %}' height='200px' />
+        <h3>Please scan...</h3>
+        <a data-toggle='modal' data-target='#dynamic-modal'>Enter Manually</a>
+    </div>
+{% endblock %}

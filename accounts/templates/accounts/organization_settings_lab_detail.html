@@ -1,0 +1,29 @@
+{% extends 'accounts/organization_base.html' %}
+
+{% load django_bootstrap_breadcrumbs %}
+{% load hosts %}
+{% load icons %}
+{% load primitive_types %}
+
+{% block breadcrumb-tags %}
+    {{ block.super }}
+    {% breadcrumb 'Lab' 'organization:lab:detail' pk=organization.pk division='lab' %}
+{% endblock %}
+
+{% block profile-content-title %}Lab Settings{% endblock %}
+
+{% block detail-actions-edit %}
+    {% if perms.gist.change_lab %}
+        {% host_url 'organization:lab:update' pk=organization.pk division='lab' host 'accounts' as url %}
+        {% large_action_icon 'glyphicons-pencil' tooltip_message='Edit Lab' %}
+    {% endif %}
+{% endblock %}
+
+{% block profile-content-body %}
+    <div class='list-group-item'>
+        <h4 class='list-group-item-heading'>Active</h4>
+        <p class='list-group-item-text'>
+            {% boolean organization.lab.active %}
+        </p>
+    </div>
+{% endblock %}

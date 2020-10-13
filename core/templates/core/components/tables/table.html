@@ -1,0 +1,19 @@
+<div id='id-list-table' class='row'>
+    <div class='col-xs-12 col-md-10'>
+        {% include 'genepeeks/components/pagination.html' %}
+
+        <table class='table table-striped table-hover'>
+            <thead>
+                <tr role='row' class='heading'>
+                    {% block table-head %}{% endblock %}
+                </tr>
+            </thead>
+            <tbody>{% block table-body %}{% endblock %}</tbody>
+        </table>
+
+        {% include 'genepeeks/components/pagination.html' %}
+    </div>
+    <div class='col-xs-4 col-md-2'>
+        {% include 'genepeeks/components/filter.html' %}
+    </div>
+</div>
